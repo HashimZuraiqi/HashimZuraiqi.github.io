@@ -4,46 +4,23 @@
 @tailwind utilities;
 
 :root {
-  /* Modern, accessible dark palette */
-  --primary: 222 89% 60%;           /* Blue (main accent) */
-  --primary-foreground: 220 13% 18%; /* Very dark blue for contrast */
-  --secondary: 217 19% 27%;         /* Muted blue-gray */
+  /* Dark theme variables */
+  --primary: 217 91% 60%;           /* Blue accent */
+  --primary-foreground: 220 13% 18%;
+  --secondary: 217 19% 27%;         
   --secondary-foreground: 210 20% 98%;
-  --muted: 215 16% 23%;             /* Muted dark gray */
+  --muted: 215 16% 23%;             
   --muted-foreground: 220 8% 70%;
   --accent: 174 60% 48%;            /* Teal accent */
   --accent-foreground: 210 20% 98%;
-  --destructive: 0 72% 51%;         /* Red for errors */
+  --destructive: 0 72% 51%;         
   --destructive-foreground: 210 20% 98%;
-  --border: 220 13% 18%;            /* Subtle border */
+  --border: 220 13% 18%;            
   --input: 220 13% 18%;
-  --ring: 222 89% 60%;              /* Blue ring */
-  --background: 222 15% 10%;        /* Main background */
-  --foreground: 210 20% 98%;        /* Main text */
-  --card: 220 13% 14%;              /* Card background */
-  --card-foreground: 210 20% 98%;
-  --popover: 220 13% 14%;
-  --popover-foreground: 210 20% 98%;
-}
-
-.dark, :root {
-  /* Same as above for dark mode */
-  --primary: 222 89% 60%;
-  --primary-foreground: 220 13% 18%;
-  --secondary: 217 19% 27%;
-  --secondary-foreground: 210 20% 98%;
-  --muted: 215 16% 23%;
-  --muted-foreground: 220 8% 70%;
-  --accent: 174 60% 48%;
-  --accent-foreground: 210 20% 98%;
-  --destructive: 0 72% 51%;
-  --destructive-foreground: 210 20% 98%;
-  --border: 220 13% 18%;
-  --input: 220 13% 18%;
-  --ring: 222 89% 60%;
-  --background: 222 15% 10%;
-  --foreground: 210 20% 98%;
-  --card: 220 13% 14%;
+  --ring: 217 91% 60%;              
+  --background: 222 15% 10%;        /* Main dark background */
+  --foreground: 210 20% 98%;        /* Light text */
+  --card: 220 13% 14%;              
   --card-foreground: 210 20% 98%;
   --popover: 220 13% 14%;
   --popover-foreground: 210 20% 98%;
@@ -52,29 +29,6 @@
 
 html, body {
   color-scheme: dark;
-}
-
-.dark, :root {
-  /* Dark theme overrides */
-  --primary: 262 83% 58%;
-  --primary-foreground: 210 20% 98%;
-  --secondary: 243 23% 18%;
-  --secondary-foreground: 210 20% 98%;
-  --muted: 240 4% 16%;
-  --muted-foreground: 220 8% 60%;
-  --accent: 262 83% 58%;
-  --accent-foreground: 210 20% 98%;
-  --destructive: 0 84% 60%;
-  --destructive-foreground: 210 20% 98%;
-  --border: 240 4% 16%;
-  --input: 240 4% 16%;
-  --ring: 262 83% 58%;
-  --background: 240 6% 10%;
-  --foreground: 210 20% 98%;
-  --card: 240 6% 12%;
-  --card-foreground: 210 20% 98%;
-  --popover: 240 6% 12%;
-  --popover-foreground: 210 20% 98%;
 }
 
 * {
