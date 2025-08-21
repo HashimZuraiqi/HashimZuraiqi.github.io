@@ -3,8 +3,9 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/', // For user/organization site, use '/'. For project site, use '/REPO-NAME/'
+  base: '/', // This is correct for username.github.io repos
   build: {
-    outDir: 'dist'
-  },
+    outDir: 'dist',
+    assetsDir: 'assets'
+  }
 });
