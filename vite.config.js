@@ -5,12 +5,6 @@ export default defineConfig({
   plugins: [react()],
   base: '/', // For user/organization site, use '/'. For project site, use '/REPO-NAME/'
   build: {
-    outDir: 'dist',
-    rollupOptions: {
-      output: {
-        assetFileNames: 'assets/[name]-[hash]-v3.[ext]',
-        chunkFileNames: 'assets/[name]-[hash]-v3.js',
-      }
-    }
+    outDir: 'dist'
   },
 });
