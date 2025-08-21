@@ -44,9 +44,10 @@ function App() {
         <meta name="description" content="Computer Science student passionate about problem-solving, technology, and creating impactful digital experiences. Specializing in front-end development with React.js." />
         <meta property="og:title" content="Hashim Zuraiqi - Computer Science Student & Front-End Developer" />
         <meta property="og:description" content="Computer Science student passionate about problem-solving, technology, and creating impactful digital experiences. Specializing in front-end development with React.js." />
+        <html className="dark" />
       </Helmet>
 
-      <div className="min-h-screen overflow-x-hidden">
+      <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
         {/* Navigation */}
         <motion.nav initial={{
         y: -100
