@@ -118,13 +118,13 @@ body {
 
 
 .glow-effect {
-  box-shadow: 0 0 24px 4px rgba(56, 189, 248, 0.25), 0 0 48px 8px rgba(13, 148, 136, 0.15);
+  box-shadow: 0 0 24px 4px hsl(var(--primary) / 0.25), 0 0 48px 8px hsl(var(--accent) / 0.15);
 }
 
 
 .skill-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(56, 189, 248, 0.18), 0 8px 32px rgba(13, 148, 136, 0.12);
+  box-shadow: 0 20px 40px hsl(var(--primary) / 0.18), 0 8px 32px hsl(var(--accent) / 0.12);
 }
 
 .nav-link {

@@ -6,5 +6,10 @@ export default defineConfig({
   base: '/', // For user/organization site, use '/'. For project site, use '/REPO-NAME/'
   build: {
     outDir: 'dist',
+    rollupOptions: {
+      output: {
+        assetFileNames: 'assets/[name]-[hash]-v2.[ext]',
+      }
+    }
   },
 });

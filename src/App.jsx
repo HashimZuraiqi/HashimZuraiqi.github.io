@@ -47,7 +47,7 @@ function App() {
         <html className="dark" />
       </Helmet>
 
-      <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
+      <div className="min-h-screen overflow-x-hidden text-foreground">
         {/* Navigation */}
         <motion.nav initial={{
         y: -100
