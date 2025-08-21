@@ -98,9 +98,9 @@ function App() {
           <motion.div style={{
           y
         }} className="absolute inset-0 opacity-30">
-            <div className="absolute top-20 left-20 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
-            <div className="absolute top-40 right-20 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-1000"></div>
-            <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-2000"></div>
+            <div className="absolute top-20 left-20 w-72 h-72 bg-primary rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
+            <div className="absolute top-40 right-20 w-72 h-72 bg-accent rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-1000"></div>
+            <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-muted rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-2000"></div>
           </motion.div>
 
           <div className="container-max text-center relative z-10">
@@ -216,10 +216,10 @@ function App() {
               <h2 className="text-4xl md:text-5xl font-bold mb-8 gradient-text">Education</h2>
               <div className="glass-effect p-8 md:p-12 max-w-4xl mx-auto">
                 <div className="flex items-center justify-center mb-6">
-                  <GraduationCap className="text-purple-400 mr-4" size={48} />
+                  <GraduationCap className="text-primary mr-4" size={48} />
                   <div className="text-left">
                     <h3 className="text-2xl font-bold text-white">Bachelor of Science in Computer Science</h3>
-                    <p className="text-lg text-purple-300 mono-font">Princess Sumaya University for Technology</p>
+                    <p className="text-lg text-primary mono-font">Princess Sumaya University for Technology</p>
                     <p className="text-white/70">Expected Graduation: June 2026</p>
                   </div>
                 </div>
@@ -310,7 +310,7 @@ function App() {
                 title: "Member",
                 organization: "THO-Company (Student startup focused on designing modern portfolio websites)",
                 year: "Present",
-                icon: <Briefcase className="text-purple-400" size={24} />
+                icon: <Briefcase className="text-primary" size={24} />
               }, {
                 title: "Web Development Experience",
                 organization: "NoNerds - Web-related projects",
@@ -332,7 +332,7 @@ function App() {
                       {experience.icon}
                       <div className="ml-4 text-left">
                         <h3 className="text-xl font-bold text-white">{experience.title}</h3>
-                        <p className="text-purple-300">{experience.organization}</p>
+                        <p className="text-primary">{experience.organization}</p>
                         <p className="text-white/70 mono-font">{experience.year}</p>
                       </div>
                     </div>
@@ -370,7 +370,7 @@ function App() {
               }} viewport={{
                 once: true
               }} className="glass-effect p-6">
-                  <Award className="text-purple-400 mx-auto mb-4" size={48} />
+                  <Award className="text-primary mx-auto mb-4" size={48} />
                   <h3 className="text-xl font-bold mb-2">Meta Front-End Development Professional Certificate</h3>
                   <p className="text-white/70 mb-4">(In Progress)</p>
                   <div className="space-y-2 text-sm mono-font">
@@ -448,11 +448,11 @@ function App() {
                     <h3 className="text-xl font-bold mb-2 gradient-text">{project.title}</h3>
                     <p className="text-white/80 mb-4">{project.description}</p>
                     <div className="flex flex-wrap gap-2 mb-4">
-                      {project.tech.map((tech, techIndex) => <span key={techIndex} className="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-sm mono-font">
+                      {project.tech.map((tech, techIndex) => <span key={techIndex} className="bg-primary/20 text-primary px-2 py-1 rounded text-sm mono-font">
                           {tech}
                         </span>)}
                     </div>
-                    <Button onClick={handleProjectClick} variant="outline" className="border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white">
+                    <Button onClick={handleProjectClick} variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
                       <ExternalLink className="mr-2 h-4 w-4" />
                       View Project
                     </Button>
@@ -490,7 +490,7 @@ function App() {
                 }} whileHover={{
                   scale: 1.05
                 }} className="glass-effect p-6 group hover:bg-white/20 transition-all duration-300">
-                    <Mail className="text-purple-400 mx-auto mb-4 group-hover:scale-110 transition-transform" size={32} />
+                    <Mail className="text-primary mx-auto mb-4 group-hover:scale-110 transition-transform" size={32} />
                     <p className="font-semibold">Email</p>
                     <p className="text-white/70 text-sm">your-email@example.com</p>
                   </motion.a>
@@ -521,7 +521,7 @@ function App() {
                 <motion.div className="mt-8" whileHover={{
                 scale: 1.05
               }}>
-                  <Button onClick={handleContactClick} className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-8 py-3 rounded-full font-semibold glow-effect">
+                  <Button onClick={handleContactClick} className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 rounded-full font-semibold glow-effect">
                     Send Message
                   </Button>
                 </motion.div>
