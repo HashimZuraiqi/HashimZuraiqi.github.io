@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Modern, accessible dark palette */
+  --primary: 222 89% 60%;           /* Blue (main accent) */
+  --primary-foreground: 220 13% 18%; /* Very dark blue for contrast */
+  --secondary: 217 19% 27%;         /* Muted blue-gray */
+  --secondary-foreground: 210 20% 98%;
+  --muted: 215 16% 23%;             /* Muted dark gray */
+  --muted-foreground: 220 8% 70%;
+  --accent: 174 60% 48%;            /* Teal accent */
+  --accent-foreground: 210 20% 98%;
+  --destructive: 0 72% 51%;         /* Red for errors */
+  --destructive-foreground: 210 20% 98%;
+  --border: 220 13% 18%;            /* Subtle border */
+  --input: 220 13% 18%;
+  --ring: 222 89% 60%;              /* Blue ring */
+  --background: 222 15% 10%;        /* Main background */
+  --foreground: 210 20% 98%;        /* Main text */
+  --card: 220 13% 14%;              /* Card background */
+  --card-foreground: 210 20% 98%;
+  --popover: 220 13% 14%;
+  --popover-foreground: 210 20% 98%;
+}
+
+.dark, :root {
+  /* Same as above for dark mode */
+  --primary: 222 89% 60%;
+  --primary-foreground: 220 13% 18%;
+  --secondary: 217 19% 27%;
+  --secondary-foreground: 210 20% 98%;
+  --muted: 215 16% 23%;
+  --muted-foreground: 220 8% 70%;
+  --accent: 174 60% 48%;
+  --accent-foreground: 210 20% 98%;
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 210 20% 98%;
+  --border: 220 13% 18%;
+  --input: 220 13% 18%;
+  --ring: 222 89% 60%;
+  --background: 222 15% 10%;
+  --foreground: 210 20% 98%;
+  --card: 220 13% 14%;
+  --card-foreground: 210 20% 98%;
+  --popover: 220 13% 14%;
+  --popover-foreground: 210 20% 98%;
+  --radius: 0.5rem;
+}
+
+html, body {
+  color-scheme: dark;
+}
+
+.dark, :root {
+  /* Dark theme overrides */
+  --primary: 262 83% 58%;
+  --primary-foreground: 210 20% 98%;
+  --secondary: 243 23% 18%;
+  --secondary-foreground: 210 20% 98%;
+  --muted: 240 4% 16%;
+  --muted-foreground: 220 8% 60%;
+  --accent: 262 83% 58%;
+  --accent-foreground: 210 20% 98%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 20% 98%;
+  --border: 240 4% 16%;
+  --input: 240 4% 16%;
+  --ring: 262 83% 58%;
+  --background: 240 6% 10%;
+  --foreground: 210 20% 98%;
+  --card: 240 6% 12%;
+  --card-foreground: 210 20% 98%;
+  --popover: 240 6% 12%;
+  --popover-foreground: 210 20% 98%;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Syne', sans-serif;
+  @apply bg-gradient-to-br from-gray-900 via-gray-800 to-gray-950 text-white min-h-screen;
+  background-attachment: fixed;
+}
+
+.mono-font {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.gradient-text {
+  @apply bg-gradient-to-r from-blue-400 via-gray-400 to-cyan-400 bg-clip-text text-transparent;
+}
+
+.glass-effect {
+  @apply backdrop-blur-lg bg-white/10 border border-white/20 rounded-2xl;
+}
+
+.floating-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+.glow-effect {
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(168, 85, 247, 0.3);
+}
+
+.nav-link {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #60a5fa, #64748b, #06b6d4);
+  transition: left 0.3s ease;
+}
+
+.nav-link:hover::before {
+  left: 0;
+}
+
+.section-padding {
+  @apply py-20 px-4 md:px-8 lg:px-16;
+}
+
+.container-max {
+  @apply max-w-7xl mx-auto;
+}
