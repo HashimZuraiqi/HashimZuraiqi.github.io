@@ -8,7 +8,8 @@ export default defineConfig({
     outDir: 'dist',
     rollupOptions: {
       output: {
-        assetFileNames: 'assets/[name]-[hash]-v2.[ext]',
+        assetFileNames: 'assets/[name]-[hash]-v3.[ext]',
+        chunkFileNames: 'assets/[name]-[hash]-v3.js',
       }
     }
   },

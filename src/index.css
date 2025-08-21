@@ -81,7 +81,7 @@ html, body {
   scroll-behavior: smooth;
 }
 
-body {
+.dark-theme-body {
   font-family: 'Syne', sans-serif;
   background: hsl(var(--background));
   color: hsl(var(--foreground));

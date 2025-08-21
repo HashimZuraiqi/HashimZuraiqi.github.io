@@ -45,6 +45,7 @@ function App() {
         <meta property="og:title" content="Hashim Zuraiqi - Computer Science Student & Front-End Developer" />
         <meta property="og:description" content="Computer Science student passionate about problem-solving, technology, and creating impactful digital experiences. Specializing in front-end development with React.js." />
         <html className="dark" />
+        <body className="dark-theme-body" />
       </Helmet>
 
       <div className="min-h-screen overflow-x-hidden text-foreground">
