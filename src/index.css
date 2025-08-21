@@ -83,7 +83,9 @@ html, body {
 
 body {
   font-family: 'Syne', sans-serif;
-  @apply bg-gradient-to-br from-gray-900 via-gray-800 to-gray-950 text-white min-h-screen;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #020617 100%);
+  color: #f8fafc;
+  min-height: 100vh;
   background-attachment: fixed;
 }
 
@@ -92,11 +94,17 @@ body {
 }
 
 .gradient-text {
-  @apply bg-gradient-to-r from-blue-400 via-gray-400 to-cyan-400 bg-clip-text text-transparent;
+  background: linear-gradient(90deg, #60a5fa 0%, #64748b 50%, #06b6d4 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 .glass-effect {
-  @apply backdrop-blur-lg bg-white/10 border border-white/20 rounded-2xl;
+  backdrop-filter: blur(16px);
+  background: rgba(30, 41, 59, 0.2);
+  border: 1px solid rgba(248, 250, 252, 0.1);
+  border-radius: 1rem;
 }
 
 .floating-animation {
@@ -108,13 +116,15 @@ body {
   50% { transform: translateY(-20px); }
 }
 
+
 .glow-effect {
-  box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+  box-shadow: 0 0 24px 4px rgba(56, 189, 248, 0.25), 0 0 48px 8px rgba(13, 148, 136, 0.15);
 }
+
 
 .skill-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(168, 85, 247, 0.3);
+  box-shadow: 0 20px 40px rgba(56, 189, 248, 0.18), 0 8px 32px rgba(13, 148, 136, 0.12);
 }
 
 .nav-link {
@@ -137,10 +147,29 @@ body {
   left: 0;
 }
 
+
 .section-padding {
-  @apply py-20 px-4 md:px-8 lg:px-16;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+@media (min-width: 768px) {
+  .section-padding {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  .section-padding {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
 }
 
+
 .container-max {
-  @apply max-w-7xl mx-auto;
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
 }

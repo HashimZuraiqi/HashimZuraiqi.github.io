@@ -146,24 +146,25 @@ function App() {
               }} transition={{
                 delay: 0.7
               }}>
-                  <Button onClick={() => scrollToSection('contact')} className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-8 py-3 rounded-full font-semibold glow-effect">
+                  <Button onClick={() => scrollToSection('contact')} className="bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-700 hover:to-teal-600 text-white px-8 py-3 rounded-full font-semibold glow-effect">
                     Get In Touch
                   </Button>
-                  <Button variant="outline" onClick={handleDownloadCV} className="border-white/30 text-white hover:bg-white/10 px-8 py-3 rounded-full font-semibold">
-                    <Download className="mr-2 h-4 w-4" />
+                  <Button variant="outline" onClick={handleDownloadCV} className="border-blue-400/30 text-blue-100 hover:bg-blue-900/30 px-8 py-3 rounded-full font-semibold flex items-center">
+                    <Download className="mr-2 h-4 w-4 text-blue-300" />
                     Download CV
                   </Button>
                 </motion.div>
               </div>
             </motion.div>
 
-            <motion.div className="absolute bottom-10 left-1/2 transform -translate-x-1/2" animate={{
-            y: [0, 10, 0]
+            <motion.div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex flex-col items-center" animate={{
+            y: [0, 12, 0]
           }} transition={{
             repeat: Infinity,
             duration: 2
           }}>
-              <ChevronDown className="text-white/60" size={32} />
+              <ChevronDown className="text-blue-400 drop-shadow-lg animate-bounce" size={36} style={{ filter: 'drop-shadow(0 0 8px #38bdf8)' }} />
+              <span className="text-xs text-blue-300 mt-1">Scroll</span>
             </motion.div>
           </div>
         </section>
@@ -187,8 +188,8 @@ function App() {
                 <p className="text-lg md:text-xl leading-relaxed text-white/90">
                   I am a second-year Computer Science student at Princess Sumaya University for Technology, expected to graduate in June 2026. I enjoy solving complex problems, learning new technologies, and building creative digital projects. My academic journey and extracurricular experiences have helped me strengthen my technical knowledge, teamwork, and leadership skills.
                 </p>
-                <div className="mt-8 p-6 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-xl">
-                  <p className="text-lg font-medium gradient-text">
+                <div className="mt-8 p-6 bg-gradient-to-r from-blue-700/30 to-teal-600/30 rounded-xl shadow-lg">
+                  <p className="text-lg font-medium text-blue-100">
                     I'm passionate about technology, especially front-end development, problem-solving, and applying computer science to create innovative solutions. I see every project as an opportunity to grow, experiment, and push my boundaries while making a meaningful impact.
                   </p>
                 </div>
