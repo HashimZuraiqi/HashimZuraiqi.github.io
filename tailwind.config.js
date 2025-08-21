@@ -7,6 +7,9 @@ module.exports = {
 		'./app/**/*.{js,jsx}',
 		'./src/**/*.{js,jsx}',
 	],
+	safelist: [
+		'dark-theme-body'
+	],
 	theme: {
 		container: {
 			center: true,
