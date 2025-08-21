@@ -11,10 +11,18 @@ function App() {
     scrollYProgress
   } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
+  
+  // Enhanced scroll progress indicator
+  const scaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.1, 0.9, 1], [0, 1, 1, 0]);
+  
   const scrollToSection = sectionId => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({
+      const offset = 80; // Account for fixed header
+      const elementPosition = element.offsetTop - offset;
+      window.scrollTo({
+        top: elementPosition,
         behavior: 'smooth'
       });
       setIsMenuOpen(false);
@@ -49,6 +57,13 @@ function App() {
       </Helmet>
 
       <div className="min-h-screen overflow-x-hidden text-foreground">
+        {/* Scroll Progress Bar */}
+        <motion.div
+          className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-teal-400 to-blue-600 origin-left z-[60] shadow-lg"
+          style={{ scaleX }}
+          initial={{ scaleX: 0 }}
+        />
+        
         {/* Navigation */}
         <motion.nav initial={{
         y: -100
@@ -95,7 +110,7 @@ function App() {
         </motion.nav>
 
         {/* Hero Section */}
-        <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
           <motion.div style={{
           y
         }} className="absolute inset-0 opacity-30">
@@ -156,17 +171,93 @@ function App() {
                     Download CV
                   </Button>
                 </motion.div>
+
+                {/* Scroll Down Indicator - below buttons on all devices */}
+                <motion.div
+                  className="flex justify-center mt-8"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.8 }}
+                >
+                  <motion.div 
+                    className="flex flex-col items-center cursor-pointer group" 
+                    animate={{
+                      y: [0, 8, 0]
+                    }} 
+                    transition={{
+                      repeat: Infinity,
+                      duration: 1.5,
+                      ease: "easeInOut"
+                    }}
+                    onClick={() => scrollToSection('about')}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <div className="relative p-2">
+                      <ChevronDown 
+                        className="text-blue-400 drop-shadow-lg group-hover:text-blue-300 transition-all duration-300" 
+                        size={32} 
+                        style={{ filter: 'drop-shadow(0 0 12px #38bdf8)' }} 
+                      />
+                      <motion.div
+                        className="absolute -inset-3 rounded-full border border-blue-400/20 bg-blue-400/5"
+                        animate={{ 
+                          scale: [1, 1.2, 1],
+                          opacity: [0.5, 0.1, 0.5] 
+                        }}
+                        transition={{ 
+                          repeat: Infinity, 
+                          duration: 2,
+                          ease: "easeInOut"
+                        }}
+                      />
+                    </div>
+                    <span className="text-xs text-blue-300 mt-1 group-hover:text-blue-200 transition-colors duration-300 font-medium">
+                      Explore
+                    </span>
+                  </motion.div>
+                </motion.div>
               </div>
             </motion.div>
 
-            <motion.div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex flex-col items-center" animate={{
-            y: [0, 12, 0]
-          }} transition={{
-            repeat: Infinity,
-            duration: 2
-          }}>
-              <ChevronDown className="text-blue-400 drop-shadow-lg animate-bounce" size={36} style={{ filter: 'drop-shadow(0 0 8px #38bdf8)' }} />
-              <span className="text-xs text-blue-300 mt-1">Scroll</span>
+            {/* Desktop Scroll Indicator - positioned in bottom-right */}
+            <motion.div 
+              className="hidden lg:flex absolute bottom-8 right-8 flex-col items-center cursor-pointer group" 
+              animate={{
+                y: [0, 8, 0]
+              }} 
+              transition={{
+                repeat: Infinity,
+                duration: 1.5,
+                ease: "easeInOut"
+              }}
+              onClick={() => scrollToSection('about')}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              initial={{ opacity: 0, x: 50 }}
+            >
+              <div className="relative p-2">
+                <ChevronDown 
+                  className="text-blue-400 drop-shadow-lg group-hover:text-blue-300 transition-all duration-300" 
+                  size={32} 
+                  style={{ filter: 'drop-shadow(0 0 12px #38bdf8)' }} 
+                />
+                <motion.div
+                  className="absolute -inset-3 rounded-full border border-blue-400/20 bg-blue-400/5"
+                  animate={{ 
+                    scale: [1, 1.2, 1],
+                    opacity: [0.5, 0.1, 0.5] 
+                  }}
+                  transition={{ 
+                    repeat: Infinity, 
+                    duration: 2,
+                    ease: "easeInOut"
+                  }}
+                />
+              </div>
+              <span className="text-xs text-blue-300 mt-1 group-hover:text-blue-200 transition-colors duration-300 font-medium">
+                Explore
+              </span>
             </motion.div>
           </div>
         </section>
@@ -539,6 +630,25 @@ function App() {
             </p>
           </div>
         </footer>
+
+        {/* Back to Top Button */}
+        <motion.button
+          className="fixed bottom-8 right-8 p-3 bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-700 hover:to-teal-600 text-white rounded-full shadow-2xl z-50 backdrop-blur-sm border border-white/10"
+          onClick={() => scrollToSection('hero')}
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ 
+            opacity: scrollYProgress.get() > 0.2 ? 1 : 0,
+            x: scrollYProgress.get() > 0.2 ? 0 : 100
+          }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+          style={{ 
+            filter: 'drop-shadow(0 8px 25px rgba(59, 130, 246, 0.4))'
+          }}
+        >
+          <ChevronDown className="w-5 h-5 rotate-180" />
+        </motion.button>
 
         <Toaster />
       </div>
