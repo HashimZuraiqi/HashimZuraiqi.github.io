@@ -35,9 +35,29 @@ function App() {
     });
   };
   const handleDownloadCV = () => {
+    // Try direct download first, fallback to opening in new tab
+    try {
+      const link = document.createElement('a');
+      link.href = '/cv/Hashim_Zuraiqi_Resume.pdf';
+      link.download = 'Hashim_Zuraiqi_Resume.pdf';
+      link.style.display = 'none';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      // Also open in new tab as backup
+      setTimeout(() => {
+        window.open('/cv/Hashim_Zuraiqi_Resume.pdf', '_blank');
+      }, 100);
+      
+    } catch (error) {
+      // Fallback: just open in new tab
+      window.open('/cv/Hashim_Zuraiqi_Resume.pdf', '_blank');
+    }
+    
     toast({
-      title: "🚧 CV download isn't implemented yet!",
-      description: "You can request CV download functionality in your next prompt! 🚀"
+      title: "✅ CV Accessed!",
+      description: "Your CV is now available for download or viewing."
     });
   };
   const handleProjectClick = () => {
@@ -306,13 +326,27 @@ function App() {
             once: true
           }} className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold mb-8 gradient-text">Education</h2>
+              
+              {/* 42 School */}
+              <div className="glass-effect p-8 md:p-12 max-w-4xl mx-auto mb-8">
+                <div className="flex items-center justify-center mb-6">
+                  <Code className="text-primary mr-4" size={48} />
+                  <div className="text-left">
+                    <h3 className="text-2xl font-bold text-white">42 School</h3>
+                    <p className="text-lg text-primary mono-font">Peer-to-peer learning • Project-based curriculum</p>
+                    <p className="text-white/70">Software Engineering Program</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* University */}
               <div className="glass-effect p-8 md:p-12 max-w-4xl mx-auto">
                 <div className="flex items-center justify-center mb-6">
                   <GraduationCap className="text-primary mr-4" size={48} />
                   <div className="text-left">
                     <h3 className="text-2xl font-bold text-white">Bachelor of Science in Computer Science</h3>
                     <p className="text-lg text-primary mono-font">Princess Sumaya University for Technology</p>
-                    <p className="text-white/70">Expected Graduation: June 2026</p>
+                    <p className="text-white/70">Expected Graduation: June 2027</p>
                   </div>
                 </div>
               </div>
