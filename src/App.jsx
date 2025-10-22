@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Github, Linkedin, Mail, Code, GraduationCap, Award, Briefcase, ExternalLink, Download, Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from './components/ui/button';
+import { CV_DOWNLOAD_URL } from './config/cv';
 import { Toaster } from './components/ui/toaster';
 import { toast } from './components/ui/use-toast';
 function App() {
@@ -34,32 +35,7 @@ function App() {
       description: "You can request contact form implementation in your next prompt! 🚀"
     });
   };
-  const handleDownloadCV = () => {
-    // Try direct download first, fallback to opening in new tab
-    try {
-      const link = document.createElement('a');
-      link.href = '/cv/Hashim_Zuraiqi_Resume.pdf';
-      link.download = 'Hashim_Zuraiqi_Resume.pdf';
-      link.style.display = 'none';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      
-      // Also open in new tab as backup
-      setTimeout(() => {
-        window.open('/cv/Hashim_Zuraiqi_Resume.pdf', '_blank');
-      }, 100);
-      
-    } catch (error) {
-      // Fallback: just open in new tab
-      window.open('/cv/Hashim_Zuraiqi_Resume.pdf', '_blank');
-    }
-    
-    toast({
-      title: "✅ CV Accessed!",
-      description: "Your CV is now available for download or viewing."
-    });
-  };
+  // Simple static link approach for CV download will be used in markup
   const handleProjectClick = () => {
     toast({
       title: "🚧 Project details coming soon!",
@@ -152,7 +128,16 @@ function App() {
               <motion.div className="w-32 h-32 mx-auto rounded-full glass-effect p-1 floating-animation" whileHover={{
               scale: 1.1
             }}>
-                <img className="w-full h-full rounded-full object-cover" alt="Hashim Zuraiqi profile photo" src="https://horizons-cdn.hostinger.com/d4a3003a-f4e0-4cf8-9e6c-0a1aefb17e2f/1744405248774-hU5aL.jpg" />
+                <img
+                  className="w-full h-full rounded-full object-cover"
+                  alt="Hashim Zuraiqi profile photo"
+                  src="/images/1744405248774.jpg"
+                  onError={(e) => {
+                    // If local image missing, fall back to the previous external URL
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = 'https://horizons-cdn.hostinger.com/d4a3003a-f4e0-4cf8-9e6c-0a1aefb17e2f/1744405248774-hU5aL.jpg';
+                  }}
+                />
               </motion.div>
 
               <div>
@@ -186,10 +171,18 @@ function App() {
                   <Button onClick={() => scrollToSection('contact')} className="bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-700 hover:to-teal-600 text-white px-8 py-3 rounded-full font-semibold glow-effect">
                     Get In Touch
                   </Button>
-                  <Button variant="outline" onClick={handleDownloadCV} className="border-blue-400/30 text-blue-100 hover:bg-blue-900/30 px-8 py-3 rounded-full font-semibold flex items-center">
-                    <Download className="mr-2 h-4 w-4 text-blue-300" />
-                    Download CV
-                  </Button>
+                  <a
+                    href={CV_DOWNLOAD_URL}
+                    // download attribute is ignored for cross-origin; Drive link will still trigger a download
+                    download={!CV_DOWNLOAD_URL.startsWith('http')}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button variant="outline" className="border-blue-400/30 text-blue-100 hover:bg-blue-900/30 px-8 py-3 rounded-full font-semibold flex items-center">
+                      <Download className="mr-2 h-4 w-4 text-blue-300" />
+                      Download CV
+                    </Button>
+                  </a>
                 </motion.div>
 
                 {/* Scroll Down Indicator - below buttons on all devices */}
@@ -199,37 +192,24 @@ function App() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.8 }}
                 >
-                  <motion.div 
-                    className="flex flex-col items-center cursor-pointer group" 
-                    animate={{
-                      y: [0, 8, 0]
-                    }} 
-                    transition={{
-                      repeat: Infinity,
-                      duration: 1.5,
-                      ease: "easeInOut"
-                    }}
+                  <motion.div
+                    className="flex flex-col items-center cursor-pointer group"
+                    animate={{ y: [0, 8, 0] }}
+                    transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
                     onClick={() => scrollToSection('about')}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
                     <div className="relative p-2">
-                      <ChevronDown 
-                        className="text-blue-400 drop-shadow-lg group-hover:text-blue-300 transition-all duration-300" 
-                        size={32} 
-                        style={{ filter: 'drop-shadow(0 0 12px #38bdf8)' }} 
+                      <ChevronDown
+                        className="text-blue-400 drop-shadow-lg group-hover:text-blue-300 transition-all duration-300"
+                        size={32}
+                        style={{ filter: 'drop-shadow(0 0 12px #38bdf8)' }}
                       />
                       <motion.div
                         className="absolute -inset-3 rounded-full border border-blue-400/20 bg-blue-400/5"
-                        animate={{ 
-                          scale: [1, 1.2, 1],
-                          opacity: [0.5, 0.1, 0.5] 
-                        }}
-                        transition={{ 
-                          repeat: Infinity, 
-                          duration: 2,
-                          ease: "easeInOut"
-                        }}
+                        animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.1, 0.5] }}
+                        transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
                       />
                     </div>
                     <span className="text-xs text-blue-300 mt-1 group-hover:text-blue-200 transition-colors duration-300 font-medium">
@@ -372,20 +352,53 @@ function App() {
               
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {[{
-                category: "Programming",
-                skills: ["C", "C++", "JavaScript", "HTML", "CSS"]
-              }, {
                 category: "Front-End Development",
-                skills: ["React.js", "UI/UX principles"]
+                skills: [
+                  "HTML5",
+                  "CSS3",
+                  "JavaScript (ES6+)",
+                  "Responsive Web Design",
+                  "DOM Manipulation",
+                  "UI/UX Design Principles",
+                  "jQuery"
+                ]
               }, {
-                category: "Problem-Solving",
-                skills: ["Competitive programming", "Algorithm design"]
+                category: "Styling & Frameworks",
+                skills: [
+                  "Bootstrap",
+                  "Flexbox & Grid Layouts",
+                  "Smooth Scrolling",
+                  "Animations"
+                ]
               }, {
-                category: "Tools",
-                skills: ["Git", "Figma", "Linux"]
+                category: "Back-End Development",
+                skills: [
+                  "PHP",
+                  "MySQL",
+                  "Form Handling & Authentication"
+                ]
               }, {
-                category: "Soft Skills",
-                skills: ["Teamwork", "Communication", "Adaptability"]
+                category: "Programming Languages",
+                skills: [
+                  "C",
+                  "C++",
+                  "JavaScript"
+                ]
+              }, {
+                category: "Tools & Version Control",
+                skills: [
+                  "Git & GitHub",
+                  "VS Code",
+                  "Command Line (Unix/Linux)"
+                ]
+              }, {
+                category: "Computer Science Fundamentals",
+                skills: [
+                  "Data Structures & Algorithms",
+                  "Object-Oriented Programming (OOP)",
+                  "Problem-Solving & Debugging",
+                  "Basic OS and Memory Concepts"
+                ]
               }].map((skillGroup, index) => <motion.div key={skillGroup.category} initial={{
                 opacity: 0,
                 y: 30
@@ -397,7 +410,7 @@ function App() {
                 delay: index * 0.1
               }} viewport={{
                 once: true
-              }} className="glass-effect p-6 skill-card transition-all duration-300">
+              }} className="glass-effect p-6 rounded-xl border border-white/10 hover:border-primary/40 transition-colors">
                     <h3 className="text-xl font-bold mb-4 gradient-text">{skillGroup.category}</h3>
                     <div className="space-y-2">
                       {skillGroup.skills.map((skill, skillIndex) => <div key={skillIndex} className="bg-white/10 rounded-lg px-3 py-2 text-sm mono-font">
@@ -433,36 +446,59 @@ function App() {
                 year: "2021",
                 icon: <Award className="text-yellow-400" size={24} />
               }, {
-                title: "Member",
-                organization: "THO-Company (Student startup focused on designing modern portfolio websites)",
+                title: "Public Relations Officer",
+                organization: "GDG PSUT (Google Developer Groups)",
+                year: "2024-2025",
+                icon: <Briefcase className="text-primary" size={24} />
+              }, {
+                title: "Web Projects — Portfolios, Restaurants, Small Businesses",
+                organization: "Freelance & Student Projects",
                 year: "Present",
                 icon: <Briefcase className="text-primary" size={24} />
               }, {
-                title: "Web Development Experience",
-                organization: "NoNerds - Web-related projects",
-                year: "Present",
-                icon: <Code className="text-cyan-400" size={24} />
-              }].map((experience, index) => <motion.div key={index} initial={{
-                opacity: 0,
-                x: index % 2 === 0 ? -50 : 50
-              }} whileInView={{
-                opacity: 1,
-                x: 0
-              }} transition={{
-                duration: 0.6,
-                delay: index * 0.2
-              }} viewport={{
-                once: true
-              }} className="glass-effect p-6 max-w-4xl mx-auto">
-                    <div className="flex items-center mb-4">
-                      {experience.icon}
-                      <div className="ml-4 text-left">
-                        <h3 className="text-xl font-bold text-white">{experience.title}</h3>
-                        <p className="text-primary">{experience.organization}</p>
-                        <p className="text-white/70 mono-font">{experience.year}</p>
-                      </div>
+                title: "Lecturer — Introduction to Computer Science",
+                organization: "NoNerds",
+                year: "2024-2025",
+                icon: <GraduationCap className="text-emerald-400" size={24} />
+              }]
+                .sort((a, b) => {
+                  const toYear = (y) => {
+                    if (!y) return 0;
+                    if (typeof y === 'string' && /present/i.test(y)) return 9999; // Present = most recent
+                    const years = String(y).match(/\d{4}/g);
+                    if (!years || years.length === 0) return 0;
+                    return parseInt(years[years.length - 1], 10); // use last year in ranges like 2024-2025
+                  };
+                  return toYear(b.year) - toYear(a.year);
+                })
+                .map((experience, index) => (
+                <motion.div
+                  key={index}
+                  initial={{
+                    opacity: 0,
+                    x: index % 2 === 0 ? -50 : 50
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    x: 0
+                  }}
+                  transition={{
+                    duration: 0.6,
+                    delay: index * 0.2
+                  }}
+                  viewport={{ once: true }}
+                  className="glass-effect p-6 max-w-4xl mx-auto"
+                >
+                  <div className="flex items-center mb-4">
+                    {experience.icon}
+                    <div className="ml-4 text-left">
+                      <h3 className="text-xl font-bold text-white">{experience.title}</h3>
+                      <p className="text-primary">{experience.organization}</p>
+                      <p className="text-white/70 mono-font">{experience.year}</p>
                     </div>
-                  </motion.div>)}
+                  </div>
+                </motion.div>
+              ))}
               </div>
             </motion.div>
           </div>
@@ -484,7 +520,7 @@ function App() {
           }} className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold mb-8 gradient-text">Certificates</h2>
               
-              <div className="grid md:grid-cols-2 gap-8">
+              <div className="grid md:grid-cols-3 gap-8">
                 <motion.div initial={{
                 opacity: 0,
                 scale: 0.9
@@ -495,7 +531,7 @@ function App() {
                 duration: 0.6
               }} viewport={{
                 once: true
-              }} className="glass-effect p-6">
+              }} className="glass-effect p-6 rounded-xl border border-white/10 hover:border-primary/40 transition-colors">
                   <Award className="text-primary mx-auto mb-4" size={48} />
                   <h3 className="text-xl font-bold mb-2">Meta Front-End Development Professional Certificate</h3>
                   <p className="text-white/70 mb-4">(In Progress)</p>
@@ -518,11 +554,45 @@ function App() {
                 delay: 0.2
               }} viewport={{
                 once: true
-              }} className="glass-effect p-6">
-                  <Award className="text-yellow-400 mx-auto mb-4" size={48} />
+              }} className="glass-effect p-6 rounded-xl border border-white/10 hover:border-primary/40 transition-colors">
+                  <div className="flex items-center justify-center gap-2 mb-4">
+                    <Award className="text-yellow-400" size={40} />
+                    <span className="text-xs uppercase tracking-wider bg-yellow-500/20 text-yellow-300 px-2 py-1 rounded">Participation</span>
+                  </div>
                   <h3 className="text-xl font-bold mb-2">Certificate of Participation</h3>
-                  <p className="text-white/70">Junior Academy STEM Challenge</p>
-                  <p className="text-yellow-300 mono-font mt-4">2021</p>
+                  <p className="text-white/80 mb-3">Junior Academy STEM Challenge</p>
+                  <div className="flex flex-wrap justify-center gap-2 mb-3 text-sm">
+                    <span className="bg-white/10 px-2 py-1 rounded">Teamwork</span>
+                    <span className="bg-white/10 px-2 py-1 rounded">STEM</span>
+                    <span className="bg-white/10 px-2 py-1 rounded">Problem Solving</span>
+                  </div>
+                  <p className="text-yellow-300 mono-font">2021</p>
+                </motion.div>
+
+                <motion.div initial={{
+                opacity: 0,
+                scale: 0.9
+              }} whileInView={{
+                opacity: 1,
+                scale: 1
+              }} transition={{
+                duration: 0.6,
+                delay: 0.3
+              }} viewport={{
+                once: true
+              }} className="glass-effect p-6 rounded-xl border border-white/10 hover:border-primary/40 transition-colors">
+                  <div className="flex items-center justify-center gap-2 mb-4">
+                    <Award className="text-blue-400" size={40} />
+                    <span className="text-xs uppercase tracking-wider bg-blue-500/20 text-blue-300 px-2 py-1 rounded">Participation</span>
+                  </div>
+                  <h3 className="text-xl font-bold mb-2">ICPC JCPC Participation</h3>
+                  <p className="text-white/80 mb-3">Jordan Collegiate Programming Contest (ICPC — JCPC)</p>
+                  <div className="flex flex-wrap justify-center gap-2 mb-3 text-sm">
+                    <span className="bg-white/10 px-2 py-1 rounded">Algorithms</span>
+                    <span className="bg-white/10 px-2 py-1 rounded">Competitive Programming</span>
+                    <span className="bg-white/10 px-2 py-1 rounded">Teamwork</span>
+                  </div>
+                  <p className="text-blue-300 mono-font">2025</p>
                 </motion.div>
               </div>
             </motion.div>
@@ -547,15 +617,17 @@ function App() {
               
               <div className="grid md:grid-cols-2 gap-8">
                 {[{
-                title: "Portfolio Templates",
-                description: "Designed creative portfolio structures for students and professionals",
-                tech: ["HTML", "CSS", "JavaScript", "UI/UX"],
-                image: "Modern portfolio website templates with creative layouts"
+                title: "SwapShelf",
+                description: "A real-world solution from an Amazon Engagement Program project for item swapping and listings.",
+                tech: ["Node.js", "Express", "EJS", "MongoDB"],
+                url: "https://github.com/HashimZuraiqi/SwapShelf",
+                image: "SwapShelf project interface"
               }, {
-                title: "Resume Builder",
-                description: "Developing a multipage web app for creating professional resumes",
-                tech: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
-                image: "Resume builder web application interface"
+                title: "Resume-Maker",
+                description: "A multi-page web app to build professional resumes with export-ready templates.",
+                tech: ["PHP", "MySQL", "HTML", "CSS", "JavaScript"],
+                url: "https://github.com/HashimZuraiqi/Resume-Maker",
+                image: "Resume maker web application interface"
               }].map((project, index) => <motion.div key={index} initial={{
                 opacity: 0,
                 y: 30
@@ -578,10 +650,10 @@ function App() {
                           {tech}
                         </span>)}
                     </div>
-                    <Button onClick={handleProjectClick} variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+                    <a href={project.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center border border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-md px-4 py-2 font-medium transition-colors">
                       <ExternalLink className="mr-2 h-4 w-4" />
-                      View Project
-                    </Button>
+                      View on GitHub
+                    </a>
                   </motion.div>)}
               </div>
             </motion.div>
@@ -610,21 +682,15 @@ function App() {
                 </p>
                 
                 <div className="grid md:grid-cols-3 gap-6">
-                  <motion.a href="mailto:your-email@example.com" onClick={e => {
-                  e.preventDefault();
-                  handleContactClick();
-                }} whileHover={{
+                  <motion.a href="mailto:hashimalzuraiqi123@gmail.com" whileHover={{
                   scale: 1.05
                 }} className="glass-effect p-6 group hover:bg-white/20 transition-all duration-300">
                     <Mail className="text-primary mx-auto mb-4 group-hover:scale-110 transition-transform" size={32} />
                     <p className="font-semibold">Email</p>
-                    <p className="text-white/70 text-sm">your-email@example.com</p>
+                    <p className="text-white/70 text-sm">hashimalzuraiqi123@gmail.com</p>
                   </motion.a>
 
-                  <motion.a href="https://linkedin.com/in/your-profile" onClick={e => {
-                  e.preventDefault();
-                  handleContactClick();
-                }} whileHover={{
+                  <motion.a href="https://www.linkedin.com/in/hashimalzuraiqi/" target="_blank" rel="noopener noreferrer" whileHover={{
                   scale: 1.05
                 }} className="glass-effect p-6 group hover:bg-white/20 transition-all duration-300">
                     <Linkedin className="text-blue-400 mx-auto mb-4 group-hover:scale-110 transition-transform" size={32} />
@@ -632,10 +698,7 @@ function App() {
                     <p className="text-white/70 text-sm">Connect with me</p>
                   </motion.a>
 
-                  <motion.a href="https://github.com/your-username" onClick={e => {
-                  e.preventDefault();
-                  handleContactClick();
-                }} whileHover={{
+                  <motion.a href="https://github.com/HashimZuraiqi" target="_blank" rel="noopener noreferrer" whileHover={{
                   scale: 1.05
                 }} className="glass-effect p-6 group hover:bg-white/20 transition-all duration-300">
                     <Github className="text-gray-400 mx-auto mb-4 group-hover:scale-110 transition-transform" size={32} />
@@ -647,7 +710,9 @@ function App() {
                 <motion.div className="mt-8" whileHover={{
                 scale: 1.05
               }}>
-                  <Button onClick={handleContactClick} className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 rounded-full font-semibold glow-effect">
+                  <Button onClick={() => {
+                    window.location.href = 'mailto:hashimalzuraiqi123@gmail.com';
+                  }} className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 rounded-full font-semibold glow-effect">
                     Send Message
                   </Button>
                 </motion.div>
@@ -660,7 +725,7 @@ function App() {
         <footer className="bg-black/40 py-8">
           <div className="container-max text-center">
             <p className="text-white/60 mono-font">
-              © 2024 Hashim Zuraiqi. Built with passion and React.js
+              © Hashim Zuraiqi. Built with passion.
             </p>
           </div>
         </footer>
