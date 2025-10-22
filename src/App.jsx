@@ -48,6 +48,19 @@ function App() {
         <meta name="description" content="Computer Science student passionate about problem-solving, technology, and creating impactful digital experiences. Specializing in front-end development with React.js." />
         <meta property="og:title" content="Hashim Zuraiqi - Computer Science Student & Front-End Developer" />
         <meta property="og:description" content="Computer Science student passionate about problem-solving, technology, and creating impactful digital experiences. Specializing in front-end development with React.js." />
+        <link rel="canonical" href="https://hashimalzuraiqi.me/" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: "Hashim Zuraiqi",
+          url: "https://hashimalzuraiqi.me/",
+          email: "mailto:hashimalzuraiqi123@gmail.com",
+          jobTitle: "Computer Science Student & Front-End Developer",
+          sameAs: [
+            "https://www.linkedin.com/in/hashimalzuraiqi/",
+            "https://github.com/HashimZuraiqi"
+          ]
+        })}</script>
         <html className="dark" />
         <body className="dark-theme-body" />
       </Helmet>
