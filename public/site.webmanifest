@@ -1,0 +1,27 @@
+{
+  "name": "Hashim Zuraiqi - Computer Science Student",
+  "short_name": "Hashim Zuraiqi",
+  "description": "Computer Science student at Princess Sumaya University & 42 School. Aspiring Frontend Developer.",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#3b82f6",
+  "background_color": "#000000"
+}

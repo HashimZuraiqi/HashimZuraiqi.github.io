@@ -44,10 +44,63 @@ function App() {
   };
   return <>
       <Helmet>
-        <title>Hashim Zuraiqi - Computer Science Student & Front-End Developer</title>
-        <meta name="description" content="Computer Science student passionate about problem-solving, technology, and creating impactful digital experiences. Specializing in front-end development with React.js." />
-        <meta property="og:title" content="Hashim Zuraiqi - Computer Science Student & Front-End Developer" />
-        <meta property="og:description" content="Computer Science student passionate about problem-solving, technology, and creating impactful digital experiences. Specializing in front-end development with React.js." />
+        <title>Hashim Zuraiqi | Computer Science Student</title>
+        <meta name="description" content="Hashim Zuraiqi - Computer Science student at Princess Sumaya University & 42 School. Aspiring Frontend Developer learning HTML5, CSS3, JavaScript, PHP, MySQL. Public Relations Officer at GDG PSUT. Meta Frontend Certificate student. JCPC participant. NoNerds lecturer. Building SwapShelf & Resume-Maker student projects." />
+        <meta name="keywords" content="Hashim, Hashim Zuraiqi, Hasheem, Hashim Developer, Computer Science Student, Aspiring Frontend Developer, 42 School, Princess Sumaya University, PSUT, GDG PSUT, Meta Certificate Student, JCPC, Jordan Collegiate Programming Contest, JavaScript, PHP, MySQL, HTML5, CSS3, Bootstrap, SwapShelf, Resume Maker, NoNerds, Web Developer Student, Hashim Portfolio, Hashim Projects, Hashim Skills" />
+        <meta property="og:title" content="Hashim Zuraiqi - Computer Science Student" />
+        <meta property="og:description" content="Computer Science student at Princess Sumaya University & 42 School. Aspiring Frontend Developer learning web technologies. GDG PSUT Officer. JCPC participant building student projects like SwapShelf & Resume-Maker." />
+        <meta property="og:image" content="https://hashimalzuraiqi.me/images/1744405248774.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Hashim Zuraiqi - Computer Science Student Profile Photo" />
+        <meta property="og:url" content="https://hashimalzuraiqi.me" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Hashim Zuraiqi - Computer Science Student" />
+        <meta name="twitter:description" content="Computer Science student at PSUT & 42 School. Aspiring Frontend Developer learning JavaScript, PHP, and MySQL. GDG PSUT Officer. JCPC participant." />
+        <meta name="twitter:image" content="https://hashimalzuraiqi.me/images/1744405248774.jpg" />
+        <meta name="twitter:image:alt" content="Hashim Zuraiqi - Computer Science Student Profile Photo" />
+        <link rel="canonical" href="https://hashimalzuraiqi.me" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Hashim Zuraiqi",
+            "alternateName": ["Hashim", "Hasheem", "Hashim Developer"],
+            "jobTitle": "Computer Science Student",
+            "description": "Computer Science Student at Princess Sumaya University & 42 School. Aspiring Frontend Developer pursuing Meta Professional Certificate. Public Relations Officer at GDG PSUT.",
+            "url": "https://hashimalzuraiqi.me",
+            "image": "https://hashimalzuraiqi.me/images/1744405248774.jpg",
+            "sameAs": [
+              "https://github.com/HashimZuraiqi",
+              "https://linkedin.com/in/hashimalzuraiqi"
+            ],
+            "knowsAbout": ["JavaScript", "HTML5", "CSS3", "PHP", "MySQL", "Bootstrap", "Frontend Development", "Web Development", "Computer Science", "Git", "jQuery", "Responsive Design"],
+            "alumniOf": [
+              {
+                "@type": "EducationalOrganization",
+                "name": "Princess Sumaya University for Technology",
+                "description": "Bachelor of Science in Computer Science"
+              },
+              {
+                "@type": "EducationalOrganization", 
+                "name": "42 School",
+                "description": "Software Engineering Program"
+              }
+            ],
+            "memberOf": {
+              "@type": "Organization",
+              "name": "GDG PSUT (Google Developer Groups)",
+              "description": "Public Relations Officer"
+            },
+            "hasCredential": [
+              {
+                "@type": "EducationalOccupationalCredential",
+                "name": "Meta Front-End Development Professional Certificate",
+                "credentialCategory": "certificate"
+              }
+            ]
+          })}
+        </script>
         <link rel="canonical" href="https://hashimalzuraiqi.me/" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
@@ -598,8 +651,8 @@ function App() {
                     <Award className="text-blue-400" size={40} />
                     <span className="text-xs uppercase tracking-wider bg-blue-500/20 text-blue-300 px-2 py-1 rounded">Participation</span>
                   </div>
-                  <h3 className="text-xl font-bold mb-2">ICPC JCPC Participation</h3>
-                  <p className="text-white/80 mb-3">Jordan Collegiate Programming Contest (ICPC — JCPC)</p>
+                  <h3 className="text-xl font-bold mb-2">JCPC Participation</h3>
+                  <p className="text-white/80 mb-3">Jordan Collegiate Programming Contest (JCPC)</p>
                   <div className="flex flex-wrap justify-center gap-2 mb-3 text-sm">
                     <span className="bg-white/10 px-2 py-1 rounded">Algorithms</span>
                     <span className="bg-white/10 px-2 py-1 rounded">Competitive Programming</span>
