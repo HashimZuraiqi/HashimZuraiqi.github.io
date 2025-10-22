@@ -292,11 +292,11 @@ function App() {
               <h2 className="text-4xl md:text-5xl font-bold mb-8 gradient-text">About Me</h2>
               <div className="glass-effect p-8 md:p-12 max-w-4xl mx-auto">
                 <p className="text-lg md:text-xl leading-relaxed text-white/90">
-                  I am a second-year Computer Science student at Princess Sumaya University for Technology, expected to graduate in June 2026. I enjoy solving complex problems, learning new technologies, and building creative digital projects. My academic journey and extracurricular experiences have helped me strengthen my technical knowledge, teamwork, and leadership skills.
+                  I am a third-year Computer Science student at Princess Sumaya University for Technology, expected to graduate in June 2027. I enjoy solving complex problems, learning new technologies, and building creative digital projects. My academic journey and extracurricular experiences have helped me strengthen my technical knowledge, teamwork, and leadership skills.
                 </p>
                 <div className="mt-8 p-6 bg-gradient-to-r from-blue-700/30 to-teal-600/30 rounded-xl shadow-lg">
                   <p className="text-lg font-medium text-blue-100">
-                    I'm passionate about technology, especially front-end development, problem-solving, and applying computer science to create innovative solutions. I see every project as an opportunity to grow, experiment, and push my boundaries while making a meaningful impact.
+                    I'm passionate about technology, especially Web development, problem-solving, and applying computer science to create innovative solutions. I see every project as an opportunity to grow, experiment, and push my boundaries while making a meaningful impact.
                   </p>
                 </div>
               </div>
