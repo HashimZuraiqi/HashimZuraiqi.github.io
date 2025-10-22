@@ -49,16 +49,16 @@ function App() {
         <meta name="keywords" content="Hashim, Hashim Zuraiqi, Hasheem, Hashim Developer, Computer Science Student, Aspiring Frontend Developer, 42 School, Princess Sumaya University, PSUT, GDG PSUT, Meta Certificate Student, JCPC, Jordan Collegiate Programming Contest, JavaScript, PHP, MySQL, HTML5, CSS3, Bootstrap, SwapShelf, Resume Maker, NoNerds, Web Developer Student, Hashim Portfolio, Hashim Projects, Hashim Skills" />
         <meta property="og:title" content="Hashim Zuraiqi - Computer Science Student" />
         <meta property="og:description" content="Computer Science student at Princess Sumaya University & 42 School. Aspiring Frontend Developer learning web technologies. GDG PSUT Officer. JCPC participant building student projects like SwapShelf & Resume-Maker." />
-        <meta property="og:image" content="https://hashimalzuraiqi.me/images/1744405248774.jpg" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="Hashim Zuraiqi - Computer Science Student Profile Photo" />
+        <meta property="og:image" content="https://hashimalzuraiqi.me/favicon.svg" />
+        <meta property="og:image:width" content="512" />
+        <meta property="og:image:height" content="512" />
+        <meta property="og:image:alt" content="Hashim Zuraiqi - HZ Logo" />
         <meta property="og:url" content="https://hashimalzuraiqi.me" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Hashim Zuraiqi - Computer Science Student" />
         <meta name="twitter:description" content="Computer Science student at PSUT & 42 School. Aspiring Frontend Developer learning JavaScript, PHP, and MySQL. GDG PSUT Officer. JCPC participant." />
-        <meta name="twitter:image" content="https://hashimalzuraiqi.me/images/1744405248774.jpg" />
-        <meta name="twitter:image:alt" content="Hashim Zuraiqi - Computer Science Student Profile Photo" />
+        <meta name="twitter:image" content="https://hashimalzuraiqi.me/favicon.svg" />
+        <meta name="twitter:image:alt" content="Hashim Zuraiqi - HZ Logo" />
         <link rel="canonical" href="https://hashimalzuraiqi.me" />
         <script type="application/ld+json">
           {JSON.stringify({
@@ -69,7 +69,7 @@ function App() {
             "jobTitle": "Computer Science Student",
             "description": "Computer Science Student at Princess Sumaya University & 42 School. Aspiring Frontend Developer pursuing Meta Professional Certificate. Public Relations Officer at GDG PSUT.",
             "url": "https://hashimalzuraiqi.me",
-            "image": "https://hashimalzuraiqi.me/images/1744405248774.jpg",
+            "image": "https://hashimalzuraiqi.me/favicon.svg",
             "sameAs": [
               "https://github.com/HashimZuraiqi",
               "https://linkedin.com/in/hashimalzuraiqi"
