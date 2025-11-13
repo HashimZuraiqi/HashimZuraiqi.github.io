@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Github, Linkedin, Mail, Code, GraduationCap, Award, Briefcase, ExternalLink, Download, Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from './components/ui/button';
-import { CV_DOWNLOAD_URL } from './config/cv';
+import { CV_VIEW_URL } from './config/cv';
 import { Toaster } from './components/ui/toaster';
 import { toast } from './components/ui/use-toast';
 function App() {
@@ -172,7 +172,7 @@ function App() {
         </motion.nav>
 
         {/* Hero Section */}
-        <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
           <motion.div style={{
           y
         }} className="absolute inset-0 opacity-30">
@@ -191,7 +191,7 @@ function App() {
           }} transition={{
             duration: 0.8
           }} className="space-y-8">
-              <motion.div className="w-32 h-32 mx-auto rounded-full glass-effect p-1 floating-animation" whileHover={{
+              <motion.div className="w-32 h-32 mx-auto rounded-full glass-effect p-1 floating-animation mt-4" whileHover={{
               scale: 1.1
             }}>
                 <img
@@ -238,15 +238,13 @@ function App() {
                     Get In Touch
                   </Button>
                   <a
-                    href={CV_DOWNLOAD_URL}
-                    // download attribute is ignored for cross-origin; Drive link will still trigger a download
-                    download={!CV_DOWNLOAD_URL.startsWith('http')}
+                    href={CV_VIEW_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <Button variant="outline" className="border-blue-400/30 text-blue-100 hover:bg-blue-900/30 px-8 py-3 rounded-full font-semibold flex items-center">
-                      <Download className="mr-2 h-4 w-4 text-blue-300" />
-                      Download CV
+                      <ExternalLink className="mr-2 h-4 w-4 text-blue-300" />
+                      View CV
                     </Button>
                   </a>
                 </motion.div>
@@ -602,10 +600,46 @@ function App() {
                   <h3 className="text-xl font-bold mb-2">Meta Front-End Development Professional Certificate</h3>
                   <p className="text-white/70 mb-4">(In Progress)</p>
                   <div className="space-y-2 text-sm mono-font">
-                    <div className="bg-green-500/20 text-green-300 px-3 py-1 rounded">✓ Introduction to Front-End Development</div>
-                    <div className="bg-green-500/20 text-green-300 px-3 py-1 rounded">✓ Programming with JavaScript</div>
-                    <div className="bg-green-500/20 text-green-300 px-3 py-1 rounded">✓ Version Control</div>
-                    <div className="bg-green-500/20 text-green-300 px-3 py-1 rounded">✓ HTML & CSS in-depth</div>
+                    <motion.a
+                      href="https://www.coursera.org/account/accomplishments/verify/YOUR_CERT_ID"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block bg-green-500/20 text-green-300 px-3 py-2 rounded cursor-pointer transition-all duration-300"
+                      whileHover={{ scale: 1.08, backgroundColor: 'rgba(34, 197, 94, 0.35)' }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      ✓ Introduction to Front-End Development
+                    </motion.a>
+                    <motion.a
+                      href="https://www.coursera.org/account/accomplishments/verify/YOUR_CERT_ID"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block bg-green-500/20 text-green-300 px-3 py-2 rounded cursor-pointer transition-all duration-300"
+                      whileHover={{ scale: 1.08, backgroundColor: 'rgba(34, 197, 94, 0.35)' }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      ✓ Programming with JavaScript
+                    </motion.a>
+                    <motion.a
+                      href="https://www.coursera.org/account/accomplishments/verify/YOUR_CERT_ID"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block bg-green-500/20 text-green-300 px-3 py-2 rounded cursor-pointer transition-all duration-300"
+                      whileHover={{ scale: 1.08, backgroundColor: 'rgba(34, 197, 94, 0.35)' }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      ✓ Version Control
+                    </motion.a>
+                    <motion.a
+                      href="https://www.coursera.org/account/accomplishments/verify/YOUR_CERT_ID"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block bg-green-500/20 text-green-300 px-3 py-2 rounded cursor-pointer transition-all duration-300"
+                      whileHover={{ scale: 1.08, backgroundColor: 'rgba(34, 197, 94, 0.35)' }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      ✓ HTML & CSS in-depth
+                    </motion.a>
                   </div>
                 </motion.div>
 
@@ -684,16 +718,18 @@ function App() {
               <div className="grid md:grid-cols-2 gap-8">
                 {[{
                 title: "SwapShelf",
+                slug: "swapshelf",
                 description: "A real-world solution from an Amazon Engagement Program project for item swapping and listings.",
                 tech: ["Node.js", "Express", "EJS", "MongoDB"],
-                url: "https://github.com/HashimZuraiqi/SwapShelf",
-                image: "SwapShelf project interface"
+                github: "https://github.com/HashimZuraiqi/SwapShelf",
+                image: "/images/projects/swapshelf/logo.png"
               }, {
                 title: "Resume-Maker",
+                slug: "resume-maker",
                 description: "A multi-page web app to build professional resumes with export-ready templates.",
                 tech: ["PHP", "MySQL", "HTML", "CSS", "JavaScript"],
-                url: "https://github.com/HashimZuraiqi/Resume-Maker",
-                image: "Resume maker web application interface"
+                github: "https://github.com/HashimZuraiqi/Resume-Maker",
+                image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=1200"
               }].map((project, index) => <motion.div key={index} initial={{
                 opacity: 0,
                 y: 30
@@ -705,22 +741,29 @@ function App() {
                 delay: index * 0.2
               }} viewport={{
                 once: true
-              }} className="glass-effect p-6 group hover:scale-105 transition-all duration-300">
-                    <div className="mb-4 rounded-lg overflow-hidden">
-                      <img className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300" alt={`${project.title} project screenshot`} src="https://images.unsplash.com/photo-1595872018818-97555653a011" />
+              }} className="glass-effect group hover:scale-105 transition-all duration-300 overflow-hidden">
+                    <div className="rounded-lg overflow-hidden bg-gradient-to-br from-blue-900/20 to-teal-900/20 flex items-center justify-center h-64">
+                      <img className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" alt={`${project.title} project screenshot`} src={project.image} />
                     </div>
-                    <h3 className="text-xl font-bold mb-2 gradient-text">{project.title}</h3>
-                    <p className="text-white/80 mb-4">{project.description}</p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.tech.map((tech, techIndex) => <span key={techIndex} className="bg-primary/20 text-primary px-2 py-1 rounded text-sm mono-font">
-                          {tech}
-                        </span>)}
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold mb-2 gradient-text">{project.title}</h3>
+                      <p className="text-white/80 mb-4">{project.description}</p>
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {project.tech.map((tech, techIndex) => <span key={techIndex} className="bg-primary/20 text-primary px-2 py-1 rounded text-sm mono-font">
+                            {tech}
+                          </span>)}
+                      </div>
+                      <div className="flex flex-wrap gap-3">
+                        <a href={`/projects/${project.slug}`} className="inline-flex items-center justify-center bg-primary text-white hover:bg-primary/90 rounded-md px-4 py-2 font-medium transition-colors">
+                          View Details
+                        </a>
+                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center border border-primary text-primary hover:bg-primary hover:text-white rounded-md px-4 py-2 font-medium transition-colors">
+                          <ExternalLink className="mr-2 h-4 w-4" />
+                          GitHub
+                        </a>
+                      </div>
                     </div>
-                    <a href={project.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center border border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-md px-4 py-2 font-medium transition-colors">
-                      <ExternalLink className="mr-2 h-4 w-4" />
-                      View on GitHub
-                    </a>
-                  </motion.div>)}
+                </motion.div>)}
               </div>
             </motion.div>
           </div>

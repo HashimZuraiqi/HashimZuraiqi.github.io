@@ -7,8 +7,8 @@ export const CV_DRIVE_FILE_ID = '';
 
 export const CV_DOWNLOAD_URL = CV_DRIVE_FILE_ID
   ? `https://drive.google.com/uc?export=download&id=${CV_DRIVE_FILE_ID}`
-  : '/cv/Hashim_Zuraiqi_Resume.pdf'; // Fallback to local file in public/cv
+  : '/cv/Hashim_Zuraiqi_Resume (2)-2.pdf'; // Fallback to local file in public/cv
 
 export const CV_VIEW_URL = CV_DRIVE_FILE_ID
   ? `https://drive.google.com/file/d/${CV_DRIVE_FILE_ID}/view?usp=sharing`
-  : '/cv/Hashim_Zuraiqi_Resume.pdf';
+  : '/cv/Hashim_Zuraiqi_Resume (2)-2.pdf';
