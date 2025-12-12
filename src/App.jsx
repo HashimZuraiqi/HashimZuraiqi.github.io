@@ -584,7 +584,7 @@ function App() {
           }} className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold mb-8 gradient-text">Certificates</h2>
               
-              <div className="grid md:grid-cols-3 gap-8">
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <motion.div initial={{
                 opacity: 0,
                 scale: 0.9
@@ -693,6 +693,32 @@ function App() {
                     <span className="bg-white/10 px-2 py-1 rounded">Teamwork</span>
                   </div>
                   <p className="text-blue-300 mono-font">2025</p>
+                </motion.div>
+
+                <motion.div initial={{
+                opacity: 0,
+                scale: 0.9
+              }} whileInView={{
+                opacity: 1,
+                scale: 1
+              }} transition={{
+                duration: 0.6,
+                delay: 0.4
+              }} viewport={{
+                once: true
+              }} className="glass-effect p-6 rounded-xl border border-white/10 hover:border-primary/40 transition-colors">
+                  <div className="flex items-center justify-center gap-2 mb-4">
+                    <Award className="text-orange-400" size={40} />
+                    <span className="text-xs uppercase tracking-wider bg-orange-500/20 text-orange-300 px-2 py-1 rounded">Participation</span>
+                  </div>
+                  <h3 className="text-xl font-bold mb-2">Amazon Engagement Program</h3>
+                  <p className="text-white/80 mb-3">Amazon Engagement Program</p>
+                  <div className="flex flex-wrap justify-center gap-2 mb-3 text-sm">
+                    <span className="bg-white/10 px-2 py-1 rounded">Web Development</span>
+                    <span className="bg-white/10 px-2 py-1 rounded">Project-Based</span>
+                    <span className="bg-white/10 px-2 py-1 rounded">Teamwork</span>
+                  </div>
+                  <p className="text-orange-300 mono-font">2025/2026</p>
                 </motion.div>
               </div>
             </motion.div>
