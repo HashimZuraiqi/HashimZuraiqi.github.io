@@ -118,7 +118,7 @@ function App() {
         <body className="dark-theme-body" />
       </Helmet>
 
-      <div className="min-h-screen overflow-x-hidden text-foreground">
+      <div className="min-h-screen text-foreground">
         {/* Scroll Progress Bar */}
         <motion.div
           className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-teal-400 to-blue-600 origin-left z-[60] shadow-lg"
@@ -172,7 +172,7 @@ function App() {
         </motion.nav>
 
         {/* Hero Section */}
-        <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+        <section id="hero" className="section-padding relative overflow-hidden pt-20">
           <motion.div style={{
           y
         }} className="absolute inset-0 opacity-30">
@@ -181,7 +181,7 @@ function App() {
             <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-muted rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-2000"></div>
           </motion.div>
 
-          <div className="container-max text-center relative z-10">
+          <div className="container-max text-center relative z-10 w-full">
             <motion.div initial={{
             opacity: 0,
             y: 50
@@ -328,7 +328,7 @@ function App() {
 
         {/* About Section */}
         <section id="about" className="section-padding">
-          <div className="container-max">
+          <div className="container-max w-full">
             <motion.div initial={{
             opacity: 0,
             y: 50
@@ -357,7 +357,7 @@ function App() {
 
         {/* Education Section */}
         <section id="education" className="section-padding bg-black/20">
-          <div className="container-max">
+          <div className="container-max w-full">
             <motion.div initial={{
             opacity: 0,
             y: 50
@@ -398,90 +398,123 @@ function App() {
           </div>
         </section>
 
-        {/* Skills Section */}
+        {/* Skills Section - Gaming Tech Tree Redesign */}
         <section id="skills" className="section-padding">
-          <div className="container-max">
-            <motion.div initial={{
-            opacity: 0,
-            y: 50
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            duration: 0.8
-          }} viewport={{
-            once: true
-          }} className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-8 gradient-text">Skills</h2>
+          <div className="container-max w-full">
+            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }} className="text-center mb-8 md:mb-16">
+              <h2 className="text-3xl md:text-5xl font-bold mb-4 gradient-text drop-shadow-sm tracking-tight">Tech Tree</h2>
+              <p className="text-white/50 text-sm md:text-base font-medium max-w-xl mx-auto mb-8 hidden md:block">Hover over nodes to reveal specialized skills and technologies.</p>
               
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {[{
-                category: "Front-End Development",
-                skills: [
-                  "HTML5",
-                  "CSS3",
-                  "JavaScript (ES6+)",
-                  "Responsive Web Design",
-                  "DOM Manipulation",
-                  "UI/UX Design Principles",
-                  "jQuery"
-                ]
-              }, {
-                category: "Styling & Frameworks",
-                skills: [
-                  "Bootstrap",
-                  "Flexbox & Grid Layouts",
-                  "Smooth Scrolling",
-                  "Animations"
-                ]
-              }, {
-                category: "Back-End Development",
-                skills: [
-                  "PHP",
-                  "MySQL",
-                  "Form Handling & Authentication"
-                ]
-              }, {
-                category: "Programming Languages",
-                skills: [
-                  "C",
-                  "C++",
-                  "JavaScript"
-                ]
-              }, {
-                category: "Tools & Version Control",
-                skills: [
-                  "Git & GitHub",
-                  "VS Code",
-                  "Command Line (Unix/Linux)"
-                ]
-              }, {
-                category: "Computer Science Fundamentals",
-                skills: [
-                  "Data Structures & Algorithms",
-                  "Object-Oriented Programming (OOP)",
-                  "Problem-Solving & Debugging",
-                  "Basic OS and Memory Concepts"
-                ]
-              }].map((skillGroup, index) => <motion.div key={skillGroup.category} initial={{
-                opacity: 0,
-                y: 30
-              }} whileInView={{
-                opacity: 1,
-                y: 0
-              }} transition={{
-                duration: 0.6,
-                delay: index * 0.1
-              }} viewport={{
-                once: true
-              }} className="glass-effect p-6 rounded-xl border border-white/10 hover:border-primary/40 transition-colors">
-                    <h3 className="text-xl font-bold mb-4 gradient-text">{skillGroup.category}</h3>
-                    <div className="space-y-2">
-                      {skillGroup.skills.map((skill, skillIndex) => <div key={skillIndex} className="bg-white/10 rounded-lg px-3 py-2 text-sm mono-font">
-                          {skill}
-                        </div>)}
-                    </div>
-                  </motion.div>)}
+              <div className="relative w-full max-w-5xl mx-auto mt-12 mb-20 flex flex-col items-center">
+                
+                {/* Global Central Spine (Glow Core) - Desktop Only for structural aesthetics */}
+                <div className="absolute left-[24px] md:left-1/2 top-4 bottom-8 w-[2px] bg-white/5 md:-translate-x-1/2 rounded-full overflow-hidden z-0">
+                   <motion.div 
+                      initial={{ height: 0 }}
+                      whileInView={{ height: "100%" }}
+                      transition={{ duration: 2, ease: "easeInOut" }}
+                      viewport={{ once: true }}
+                      className="w-full bg-gradient-to-b from-primary via-blue-400 to-transparent shadow-[0_0_15px_rgba(var(--primary),0.8)]"
+                   />
+                </div>
+
+                <div className="flex flex-col w-full space-y-8 md:space-y-0 relative z-10">
+                  {[{
+                    category: "CS Fundamentals",
+                    icon: <GraduationCap size={20} />,
+                    skills: ["Data Structures", "Algorithms", "OOP", "Debugging", "OS Concepts"],
+                    align: "right",
+                    color: "primary"
+                  }, {
+                    category: "Version Control",
+                    icon: <Code size={20} />,
+                    skills: ["Git & GitHub", "Command Line", "Unix/Linux", "VS Code"],
+                    align: "left",
+                    color: "blue-400",
+                    marginTop: "md:-mt-12"
+                  }, {
+                    category: "Languages",
+                    icon: <Code size={20} />,
+                    skills: ["JavaScript (ES6+)", "C", "C++", "PHP"],
+                    align: "right",
+                    color: "yellow-400",
+                    marginTop: "md:mt-8"
+                  }, {
+                    category: "Front-End",
+                    icon: <Menu size={20} />,
+                    skills: ["HTML5", "CSS3", "DOM Manipulation", "jQuery", "Responsive Design", "UI/UX Principles"],
+                    align: "left",
+                    color: "primary",
+                    marginTop: "md:-mt-6"
+                  }, {
+                    category: "Back-End",
+                    icon: <Briefcase size={20} />,
+                    skills: ["PHP", "MySQL", "Authentication", "Form Handling"],
+                    align: "right",
+                    color: "orange-400",
+                    marginTop: "md:-mt-6"
+                  }, {
+                    category: "Frameworks",
+                    icon: <Award size={20} />,
+                    skills: ["Bootstrap", "Flexbox & Grid", "Smooth Scrolling", "Animations"],
+                    align: "left",
+                    color: "blue-400",
+                    marginTop: "md:-mt-6"
+                  }].map((node, index) => {
+                    // Decide node alignment properties
+                    const isLeft = node.align === "left";
+                    
+                    return (
+                      <motion.div 
+                        key={node.category} 
+                        initial={{ opacity: 0, x: isLeft ? -30 : 30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        className={`group relative flex w-full md:w-1/2 ${isLeft ? 'md:self-start md:pr-12 md:justify-end' : 'md:self-end md:pl-12 md:justify-start'} ${node.marginTop || ''}`}
+                      >
+                         {/* Connection branch line to central spine (Desktop) */}
+                         <div className={`hidden md:block absolute top-10 border-t-2 border-white/10 w-12 z-0 transition-colors duration-500 group-hover:border-${node.color}/40 ${isLeft ? 'right-0' : 'left-0'}`} />
+
+                         {/* Mobile Timeline Dot */}
+                         <div className="absolute left-[20px] top-6 w-3 h-3 rounded-full bg-white/20 border-2 border-[#09090b] md:hidden z-20 transition-colors duration-500 group-hover:bg-primary shadow-[0_0_10px_rgba(var(--primary),0.5)]" />
+
+                         {/* Node Container */}
+                         <div className="glass-effect relative overflow-hidden backdrop-blur-xl bg-white/[0.02] border border-white/10 rounded-2xl p-5 ml-14 md:ml-0 w-full md:max-w-sm transition-all duration-500 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-1">
+                            
+                            {/* Hover Reveal Background Glow */}
+                            <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                            
+                            {/* Node Header */}
+                            <div className="flex items-center gap-4 relative z-10">
+                               <div className="bg-white/5 p-3 rounded-xl border border-white/10 text-white shadow-lg group-hover:bg-primary/20 group-hover:border-primary/30 group-hover:text-primary group-hover:scale-110 group-hover:-rotate-3 transition-all duration-500 shrink-0">
+                                 {node.icon}
+                               </div>
+                               <div>
+                                  <h3 className="text-lg md:text-xl font-bold text-white/90 group-hover:text-white transition-colors duration-300">
+                                    {node.category}
+                                  </h3>
+                                  <p className="text-xs text-white/40 uppercase tracking-widest mt-1 block group-hover:hidden transition-all duration-300">Hover to expand</p>
+                                  <p className="text-xs text-primary/80 uppercase tracking-widest mt-1 hidden group-hover:block transition-all duration-300">Active Node</p>
+                               </div>
+                            </div>
+
+                            {/* Node Expandable Skills Payload */}
+                            <div className="grid grid-rows-[0fr] opacity-0 group-hover:grid-rows-[1fr] group-hover:opacity-100 group-hover:mt-5 transition-all duration-500 ease-in-out relative z-10">
+                               <div className="overflow-hidden flex flex-wrap gap-2 pt-1">
+                                  {node.skills.map((skill, i) => (
+                                    <span key={i} className="bg-black/40 border border-white/5 text-white/60 px-2.5 py-1 rounded-md text-[11px] font-mono group-hover:text-white/90 group-hover:border-white/15 transition-colors duration-500 delay-100 hover:!bg-primary/20 hover:!text-primary hover:!border-primary/40 cursor-default">
+                                       {skill}
+                                    </span>
+                                  ))}
+                               </div>
+                            </div>
+
+                         </div>
+                      </motion.div>
+                    );
+                  })}
+                </div>
               </div>
             </motion.div>
           </div>
@@ -489,7 +522,7 @@ function App() {
 
         {/* Experience Section */}
         <section id="experience" className="section-padding bg-black/20">
-          <div className="container-max">
+          <div className="container-max w-full">
             <motion.div initial={{
             opacity: 0,
             y: 50
@@ -500,66 +533,71 @@ function App() {
             duration: 0.8
           }} viewport={{
             once: true
-          }} className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-8 gradient-text">Experience & Activities</h2>
+          }} className="text-center mb-8 md:mb-12 relative">
+              {/* Subtle ambient glow behind header */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-primary/10 rounded-full blur-[80px] -z-10 pointer-events-none" />
+              <h2 className="text-3xl md:text-5xl font-bold mb-6 md:mb-8 gradient-text drop-shadow-sm tracking-tight">Experience & Activities</h2>
               
-              <div className="space-y-8">
+              <div className="flex flex-col gap-4 md:gap-5">
                 {[{
                 title: "Junior Academy STEM Challenge Participant",
                 organization: "New York Academy of Sciences",
                 year: "2021",
-                icon: <Award className="text-yellow-400" size={24} />
+                icon: <Award className="text-yellow-400 group-hover:scale-110 transition-transform duration-300" size={32} />,
+                bgIcon: <Award className="text-yellow-400" size={120} />
               }, {
                 title: "Public Relations Officer",
                 organization: "GDG PSUT (Google Developer Groups)",
                 year: "2024-2025",
-                icon: <Briefcase className="text-primary" size={24} />
+                icon: <Briefcase className="text-primary group-hover:scale-110 transition-transform duration-300" size={32} />,
+                bgIcon: <Briefcase className="text-primary" size={120} />
               }, {
                 title: "Web Projects — Portfolios, Restaurants, Small Businesses",
                 organization: "Freelance & Student Projects",
                 year: "Present",
-                icon: <Briefcase className="text-primary" size={24} />
+                icon: <Code className="text-primary group-hover:scale-110 transition-transform duration-300" size={32} />,
+                bgIcon: <Code className="text-primary" size={120} />
               }, {
                 title: "Lecturer — Introduction to Computer Science",
                 organization: "NoNerds",
                 year: "2024-2025",
-                icon: <GraduationCap className="text-emerald-400" size={24} />
+                icon: <GraduationCap className="text-emerald-400 group-hover:scale-110 transition-transform duration-300" size={32} />,
+                bgIcon: <GraduationCap className="text-emerald-400" size={120} />
               }]
                 .sort((a, b) => {
                   const toYear = (y) => {
                     if (!y) return 0;
-                    if (typeof y === 'string' && /present/i.test(y)) return 9999; // Present = most recent
+                    if (typeof y === 'string' && /present/i.test(y)) return 9999;
                     const years = String(y).match(/\d{4}/g);
                     if (!years || years.length === 0) return 0;
-                    return parseInt(years[years.length - 1], 10); // use last year in ranges like 2024-2025
+                    return parseInt(years[years.length - 1], 10);
                   };
                   return toYear(b.year) - toYear(a.year);
                 })
                 .map((experience, index) => (
                 <motion.div
                   key={index}
-                  initial={{
-                    opacity: 0,
-                    x: index % 2 === 0 ? -50 : 50
-                  }}
-                  whileInView={{
-                    opacity: 1,
-                    x: 0
-                  }}
-                  transition={{
-                    duration: 0.6,
-                    delay: index * 0.2
-                  }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
                   viewport={{ once: true }}
-                  className="glass-effect p-6 max-w-4xl mx-auto"
+                  className="glass-effect group relative overflow-hidden p-4 md:p-5 flex flex-col sm:flex-row items-start sm:items-center w-full max-w-4xl mx-auto transition-all duration-500 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/20 backdrop-blur-xl bg-white/[0.02]"
                 >
-                  <div className="flex items-center mb-4">
-                    {experience.icon}
-                    <div className="ml-4 text-left">
-                      <h3 className="text-xl font-bold text-white">{experience.title}</h3>
-                      <p className="text-primary">{experience.organization}</p>
-                      <p className="text-white/70 mono-font">{experience.year}</p>
+                  {/* Subtle Gradient Glow on Hover */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+
+                  <div className="flex bg-gradient-to-br from-primary/20 to-primary/5 p-2.5 md:p-3 rounded-xl border border-primary/20 mb-3 sm:mb-0 sm:mr-5 shrink-0 shadow-lg shadow-primary/5 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                    <div className="text-primary scale-90 md:scale-100">{experience.icon}</div>
+                  </div>
+                  
+                  <div className="flex-1 min-w-0 z-10 w-full">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 md:gap-2 mb-1">
+                      <h3 className="text-base md:text-xl font-bold text-white/95 truncate group-hover:text-white transition-colors duration-300">{experience.title}</h3>
+                      <span className="inline-flex items-center justify-center bg-white/5 border border-white/10 px-2.5 py-0.5 md:px-3 md:py-1 rounded-full text-[10px] md:text-[11px] uppercase tracking-wider text-white/60 mono-font shrink-0 w-fit sm:w-auto group-hover:border-primary/30 group-hover:text-primary/90 transition-all duration-500">
+                        {experience.year}
+                      </span>
                     </div>
+                    <p className="text-white/50 font-medium text-xs md:text-sm group-hover:text-white/70 transition-colors duration-300">{experience.organization}</p>
                   </div>
                 </motion.div>
               ))}
@@ -569,8 +607,8 @@ function App() {
         </section>
 
         {/* Certificates Section */}
-        <section className="section-padding">
-          <div className="container-max">
+        <section id="certificates" className="section-padding">
+          <div className="container-max w-full">
             <motion.div initial={{
             opacity: 0,
             y: 50
@@ -581,144 +619,111 @@ function App() {
             duration: 0.8
           }} viewport={{
             once: true
-          }} className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-8 gradient-text">Certificates</h2>
+          }} className="text-center mb-8 md:mb-12 relative">
+              {/* Subtle ambient glow behind header */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-primary/10 rounded-full blur-[80px] -z-10 pointer-events-none" />
+              <h2 className="text-3xl md:text-5xl font-bold mb-6 md:mb-8 gradient-text drop-shadow-sm tracking-tight">Certificates</h2>
               
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <motion.div initial={{
-                opacity: 0,
-                scale: 0.9
-              }} whileInView={{
-                opacity: 1,
-                scale: 1
-              }} transition={{
-                duration: 0.6
-              }} viewport={{
-                once: true
-              }} className="glass-effect p-6 rounded-xl border border-white/10 hover:border-primary/40 transition-colors">
-                  <Award className="text-primary mx-auto mb-4" size={48} />
-                  <h3 className="text-xl font-bold mb-2">Meta Front-End Development Professional Certificate</h3>
-                  <p className="text-white/70 mb-4">(In Progress)</p>
-                  <div className="space-y-2 text-sm mono-font">
-                    <motion.a
-                      href="https://www.coursera.org/account/accomplishments/verify/YOUR_CERT_ID"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block bg-green-500/20 text-green-300 px-3 py-2 rounded cursor-pointer transition-all duration-300"
-                      whileHover={{ scale: 1.08, backgroundColor: 'rgba(34, 197, 94, 0.35)' }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      ✓ Introduction to Front-End Development
-                    </motion.a>
-                    <motion.a
-                      href="https://www.coursera.org/account/accomplishments/verify/YOUR_CERT_ID"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block bg-green-500/20 text-green-300 px-3 py-2 rounded cursor-pointer transition-all duration-300"
-                      whileHover={{ scale: 1.08, backgroundColor: 'rgba(34, 197, 94, 0.35)' }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      ✓ Programming with JavaScript
-                    </motion.a>
-                    <motion.a
-                      href="https://www.coursera.org/account/accomplishments/verify/YOUR_CERT_ID"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block bg-green-500/20 text-green-300 px-3 py-2 rounded cursor-pointer transition-all duration-300"
-                      whileHover={{ scale: 1.08, backgroundColor: 'rgba(34, 197, 94, 0.35)' }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      ✓ Version Control
-                    </motion.a>
-                    <motion.a
-                      href="https://www.coursera.org/account/accomplishments/verify/YOUR_CERT_ID"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block bg-green-500/20 text-green-300 px-3 py-2 rounded cursor-pointer transition-all duration-300"
-                      whileHover={{ scale: 1.08, backgroundColor: 'rgba(34, 197, 94, 0.35)' }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      ✓ HTML & CSS in-depth
-                    </motion.a>
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }} viewport={{ once: true }} className="glass-effect group relative flex flex-col p-5 transition-all duration-500 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/20 h-full backdrop-blur-xl bg-white/[0.02]">
+                  <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-xl" />
+                  
+                  <div className="flex items-center gap-3.5 mb-5 pb-5 border-b border-white/5">
+                    <div className="bg-gradient-to-br from-primary/20 to-primary/5 p-2.5 rounded-xl border border-primary/20 text-primary shadow-lg shadow-primary/5 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                      <Award size={24} />
+                    </div>
+                    <div>
+                      <h3 className="text-base font-bold text-white/95 leading-tight">Meta Front-End</h3>
+                      <p className="text-white/40 text-[10px] uppercase tracking-wider mt-1">In Progress</p>
+                    </div>
+                  </div>
+
+                  <div className="flex-1 flex flex-col z-10">
+                    <h4 className="text-[10px] font-bold text-primary/80 mb-3 tracking-widest uppercase">Courses</h4>
+                    <ul className="space-y-2.5 text-sm flex-1">
+                      {["Intro to Front-End", "Programming with JS", "Version Control", "HTML & CSS in-depth"].map((course, i) => (
+                        <li key={i} className="flex items-start gap-2.5 text-white/50 group-hover:text-white/80 transition-colors duration-300">
+                          <span className="w-1.5 h-1.5 rounded-full bg-primary/40 group-hover:bg-primary/80 mt-1.5 shrink-0 shadow-[0_0_8px_rgba(var(--primary),0.8)] transition-colors duration-300" />
+                          <span className="leading-snug">{course}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </motion.div>
 
-                <motion.div initial={{
-                opacity: 0,
-                scale: 0.9
-              }} whileInView={{
-                opacity: 1,
-                scale: 1
-              }} transition={{
-                duration: 0.6,
-                delay: 0.2
-              }} viewport={{
-                once: true
-              }} className="glass-effect p-6 rounded-xl border border-white/10 hover:border-primary/40 transition-colors">
-                  <div className="flex items-center justify-center gap-2 mb-4">
-                    <Award className="text-yellow-400" size={40} />
-                    <span className="text-xs uppercase tracking-wider bg-yellow-500/20 text-yellow-300 px-2 py-1 rounded">Participation</span>
+                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }} viewport={{ once: true }} className="glass-effect group relative flex flex-col p-5 transition-all duration-500 hover:-translate-y-1.5 hover:border-yellow-400/40 hover:shadow-2xl hover:shadow-yellow-400/20 h-full backdrop-blur-xl bg-white/[0.02]">
+                  <div className="absolute inset-0 bg-gradient-to-b from-yellow-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-xl" />
+                  
+                  <div className="flex items-center gap-3.5 mb-5 pb-5 border-b border-white/5">
+                    <div className="bg-gradient-to-br from-yellow-400/20 to-yellow-400/5 p-2.5 rounded-xl border border-yellow-400/20 text-yellow-400 shadow-lg shadow-yellow-400/5 group-hover:scale-110 group-hover:-rotate-3 transition-all duration-500">
+                      <Award size={24} />
+                    </div>
+                    <div>
+                      <h3 className="text-base font-bold text-white/95 leading-tight">Junior Academy</h3>
+                      <p className="text-yellow-400/50 text-[10px] uppercase tracking-wider mt-1">2021</p>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold mb-2">Certificate of Participation</h3>
-                  <p className="text-white/80 mb-3">Junior Academy STEM Challenge</p>
-                  <div className="flex flex-wrap justify-center gap-2 mb-3 text-sm">
-                    <span className="bg-white/10 px-2 py-1 rounded">Teamwork</span>
-                    <span className="bg-white/10 px-2 py-1 rounded">STEM</span>
-                    <span className="bg-white/10 px-2 py-1 rounded">Problem Solving</span>
+
+                  <div className="flex-1 flex flex-col z-10">
+                    <h4 className="text-[10px] font-bold text-yellow-400/80 mb-3 tracking-widest uppercase">STEM Challenge</h4>
+                    <p className="text-sm text-white/50 group-hover:text-white/80 transition-colors duration-300 mb-6 flex-1 leading-relaxed">Participated in global challenges focusing on real-world problem solving.</p>
+                    
+                    <div className="flex flex-wrap gap-2 mt-auto">
+                       {["Teamwork", "STEM", "Problem Solving"].map((tag, i) => (
+                        <span key={i} className="bg-white/5 border border-white/10 text-white/40 group-hover:text-yellow-400/80 group-hover:border-yellow-400/30 transition-all duration-500 px-2.5 py-1 rounded-md text-[10px] uppercase tracking-wider">{tag}</span>
+                      ))}
+                    </div>
                   </div>
-                  <p className="text-yellow-300 mono-font">2021</p>
                 </motion.div>
 
-                <motion.div initial={{
-                opacity: 0,
-                scale: 0.9
-              }} whileInView={{
-                opacity: 1,
-                scale: 1
-              }} transition={{
-                duration: 0.6,
-                delay: 0.3
-              }} viewport={{
-                once: true
-              }} className="glass-effect p-6 rounded-xl border border-white/10 hover:border-primary/40 transition-colors">
-                  <div className="flex items-center justify-center gap-2 mb-4">
-                    <Award className="text-blue-400" size={40} />
-                    <span className="text-xs uppercase tracking-wider bg-blue-500/20 text-blue-300 px-2 py-1 rounded">Participation</span>
+                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }} viewport={{ once: true }} className="glass-effect group relative flex flex-col p-5 transition-all duration-500 hover:-translate-y-1.5 hover:border-blue-400/40 hover:shadow-2xl hover:shadow-blue-400/20 h-full backdrop-blur-xl bg-white/[0.02]">
+                  <div className="absolute inset-0 bg-gradient-to-b from-blue-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-xl" />
+                  
+                  <div className="flex items-center gap-3.5 mb-5 pb-5 border-b border-white/5">
+                    <div className="bg-gradient-to-br from-blue-400/20 to-blue-400/5 p-2.5 rounded-xl border border-blue-400/20 text-blue-400 shadow-lg shadow-blue-400/5 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                      <Award size={24} />
+                    </div>
+                    <div>
+                      <h3 className="text-base font-bold text-white/95 leading-tight">JCPC Contest</h3>
+                      <p className="text-blue-400/50 text-[10px] uppercase tracking-wider mt-1">2025</p>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold mb-2">JCPC Participation</h3>
-                  <p className="text-white/80 mb-3">Jordan Collegiate Programming Contest (JCPC)</p>
-                  <div className="flex flex-wrap justify-center gap-2 mb-3 text-sm">
-                    <span className="bg-white/10 px-2 py-1 rounded">Algorithms</span>
-                    <span className="bg-white/10 px-2 py-1 rounded">Competitive Programming</span>
-                    <span className="bg-white/10 px-2 py-1 rounded">Teamwork</span>
+
+                  <div className="flex-1 flex flex-col z-10">
+                    <h4 className="text-[10px] font-bold text-blue-400/80 mb-3 tracking-widest uppercase">Participation</h4>
+                    <p className="text-sm text-white/50 group-hover:text-white/80 transition-colors duration-300 mb-6 flex-1 leading-relaxed">Jordan Collegiate Programming Contest participant solving algorithmic challenges.</p>
+                    
+                    <div className="flex flex-wrap gap-2 mt-auto">
+                       {["Algorithms", "Competitive", "Teamwork"].map((tag, i) => (
+                        <span key={i} className="bg-white/5 border border-white/10 text-white/40 group-hover:text-blue-400/80 group-hover:border-blue-400/30 transition-all duration-500 px-2.5 py-1 rounded-md text-[10px] uppercase tracking-wider">{tag}</span>
+                      ))}
+                    </div>
                   </div>
-                  <p className="text-blue-300 mono-font">2025</p>
                 </motion.div>
 
-                <motion.div initial={{
-                opacity: 0,
-                scale: 0.9
-              }} whileInView={{
-                opacity: 1,
-                scale: 1
-              }} transition={{
-                duration: 0.6,
-                delay: 0.4
-              }} viewport={{
-                once: true
-              }} className="glass-effect p-6 rounded-xl border border-white/10 hover:border-primary/40 transition-colors">
-                  <div className="flex items-center justify-center gap-2 mb-4">
-                    <Award className="text-orange-400" size={40} />
-                    <span className="text-xs uppercase tracking-wider bg-orange-500/20 text-orange-300 px-2 py-1 rounded">Participation</span>
+                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }} viewport={{ once: true }} className="glass-effect group relative flex flex-col p-5 transition-all duration-500 hover:-translate-y-1.5 hover:border-orange-400/40 hover:shadow-2xl hover:shadow-orange-400/20 h-full backdrop-blur-xl bg-white/[0.02]">
+                  <div className="absolute inset-0 bg-gradient-to-b from-orange-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-xl" />
+                  
+                  <div className="flex items-center gap-3.5 mb-5 pb-5 border-b border-white/5">
+                    <div className="bg-gradient-to-br from-orange-400/20 to-orange-400/5 p-2.5 rounded-xl border border-orange-400/20 text-orange-400 shadow-lg shadow-orange-400/5 group-hover:scale-110 group-hover:-rotate-3 transition-all duration-500">
+                      <Award size={24} />
+                    </div>
+                    <div>
+                      <h3 className="text-base font-bold text-white/95 leading-tight">Amazon Program</h3>
+                      <p className="text-orange-400/50 text-[10px] uppercase tracking-wider mt-1">2025/2026</p>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold mb-2">Amazon Engagement Program</h3>
-                  <p className="text-white/80 mb-3">Academic Program Participation</p>
-                  <div className="flex flex-wrap justify-center gap-2 mb-3 text-sm">
-                    <span className="bg-white/10 px-2 py-1 rounded">Web Development</span>
-                    <span className="bg-white/10 px-2 py-1 rounded">Project-Based</span>
-                    <span className="bg-white/10 px-2 py-1 rounded">Teamwork</span>
+
+                  <div className="flex-1 flex flex-col z-10">
+                    <h4 className="text-[10px] font-bold text-orange-400/80 mb-3 tracking-widest uppercase">Engagement</h4>
+                    <p className="text-sm text-white/50 group-hover:text-white/80 transition-colors duration-300 mb-6 flex-1 leading-relaxed">Academic engagement program heavily focused on Web Development.</p>
+                    
+                    <div className="flex flex-wrap gap-2 mt-auto">
+                       {["Web Dev", "Project-Based", "Teamwork"].map((tag, i) => (
+                        <span key={i} className="bg-white/5 border border-white/10 text-white/40 group-hover:text-orange-400/80 group-hover:border-orange-400/30 transition-all duration-500 px-2.5 py-1 rounded-md text-[10px] uppercase tracking-wider">{tag}</span>
+                      ))}
+                    </div>
                   </div>
-                  <p className="text-orange-300 mono-font">2025/2026</p>
                 </motion.div>
               </div>
             </motion.div>
@@ -727,7 +732,7 @@ function App() {
 
         {/* Projects Section */}
         <section id="projects" className="section-padding bg-black/20">
-          <div className="container-max">
+          <div className="container-max w-full">
             <motion.div initial={{
             opacity: 0,
             y: 50
@@ -756,40 +761,61 @@ function App() {
                 tech: ["PHP", "MySQL", "HTML", "CSS", "JavaScript"],
                 github: "https://github.com/HashimZuraiqi/Resume-Maker",
                 image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=1200"
-              }].map((project, index) => <motion.div key={index} initial={{
-                opacity: 0,
-                y: 30
-              }} whileInView={{
-                opacity: 1,
-                y: 0
-              }} transition={{
-                duration: 0.6,
-                delay: index * 0.2
-              }} viewport={{
-                once: true
-              }} className="glass-effect group hover:scale-105 transition-all duration-300 overflow-hidden">
-                    <div className="rounded-lg overflow-hidden bg-gradient-to-br from-blue-900/20 to-teal-900/20 flex items-center justify-center h-64">
-                      <img className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" alt={`${project.title} project screenshot`} src={project.image} />
-                    </div>
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold mb-2 gradient-text">{project.title}</h3>
-                      <p className="text-white/80 mb-4">{project.description}</p>
+              }].map((project, index) => (
+                <motion.div 
+                  key={index} 
+                  initial={{ opacity: 0, y: 30 }} 
+                  whileInView={{ opacity: 1, y: 0 }} 
+                  transition={{ duration: 0.6, delay: index * 0.2 }} 
+                  viewport={{ once: true }} 
+                  className="relative group overflow-hidden rounded-xl h-80 w-full"
+                >
+                  {/* Base Layer: Image & Gradient Overlay */}
+                  <div className="absolute inset-0 w-full h-full bg-slate-900">
+                    <img 
+                      className="w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-30 transition-all duration-500 ease-in-out" 
+                      alt={`${project.title} screenshot`} 
+                      src={project.image} 
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent"></div>
+                  </div>
+
+                  {/* Always Visible Text (Bottom Left) */}
+                  <div className="absolute bottom-6 left-6 right-6 z-10 transition-transform duration-500 ease-in-out group-hover:translate-y-[-120%] group-hover:opacity-0">
+                    <h3 className="text-2xl font-bold text-white mb-1 shadow-sm">{project.title}</h3>
+                    <p className="text-white/80 line-clamp-1 text-sm">{project.description}</p>
+                  </div>
+
+                  {/* Sliding Snippet Container - Hidden initially, slides up on Hover */}
+                  <div className="absolute inset-x-0 bottom-0 top-0 p-6 flex flex-col justify-between translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] z-20 bg-slate-900/80 backdrop-blur-sm border-t border-primary/20">
+                    <div>
+                      <h3 className="text-xl font-bold mb-3 gradient-text flex items-center justify-between">
+                        {project.title}
+                        <ExternalLink className="w-5 h-5 text-primary opacity-70" />
+                      </h3>
+                      <p className="text-white/90 text-sm leading-relaxed mb-4">{project.description}</p>
+                      
                       <div className="flex flex-wrap gap-2 mb-4">
-                        {project.tech.map((tech, techIndex) => <span key={techIndex} className="bg-primary/20 text-primary px-2 py-1 rounded text-sm mono-font">
+                        {project.tech.map((tech, techIndex) => (
+                          <span key={techIndex} className="bg-primary/20 text-primary px-2 py-1 rounded text-xs mono-font font-medium">
                             {tech}
-                          </span>)}
-                      </div>
-                      <div className="flex flex-wrap gap-3">
-                        <a href={`/projects/${project.slug}`} className="inline-flex items-center justify-center bg-primary text-white hover:bg-primary/90 rounded-md px-4 py-2 font-medium transition-colors">
-                          View Details
-                        </a>
-                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center border border-primary text-primary hover:bg-primary hover:text-white rounded-md px-4 py-2 font-medium transition-colors">
-                          <ExternalLink className="mr-2 h-4 w-4" />
-                          GitHub
-                        </a>
+                          </span>
+                        ))}
                       </div>
                     </div>
-                </motion.div>)}
+
+                    <div className="flex flex-wrap gap-3 mt-auto">
+                      <a href={`/projects/${project.slug}`} className="flex-1 text-center bg-primary text-white hover:bg-primary/90 rounded-md px-4 py-2 text-sm font-medium transition-colors shadow-lg shadow-primary/20">
+                        View Details
+                      </a>
+                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex-1 text-center border border-primary/50 text-white hover:bg-primary/20 rounded-md px-4 py-2 text-sm font-medium transition-colors flex items-center justify-center">
+                        <Github className="mr-2 h-4 w-4" />
+                        Code
+                      </a>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
               </div>
             </motion.div>
           </div>
@@ -797,7 +823,7 @@ function App() {
 
         {/* Contact Section */}
         <section id="contact" className="section-padding">
-          <div className="container-max">
+          <div className="container-max w-full">
             <motion.div initial={{
             opacity: 0,
             y: 50
